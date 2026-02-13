@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<winex:WindowEx
+    x:Class="GUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winex ="using:WinUIEx"
+    mc:Ignorable="d"
+    Title="Word Degenerator"
+    MinWidth="900"
+    MinHeight="600">
+
+    <winex:WindowEx.SystemBackdrop>
+        <MicaBackdrop />
+    </winex:WindowEx.SystemBackdrop>
+
+    <Grid Background="#111111">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--> Left IO panel</!-->
+        <Grid x:Name="IOGrid" Margin="8,8,4,8" Background="#222222" CornerRadius="4" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="InputGrid" Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox TextWrapping="Wrap" Foreground="Cornsilk" Text="{x:Bind WDVM.InputText, Mode=TwoWay}" Margin="8,8,4,4" IsSpellCheckEnabled="False" AcceptsReturn="True"
+                     x:Name="InputTextBox" Background="#333333" CornerRadius="4" Grid.Column="0"></TextBox>
+
+                <StackPanel Grid.Column="1" Margin="4,8,8,4" Background="#333333" CornerRadius="4">
+                    <Button Click="{x:Bind WDVM.LoadFileAsync}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
+                        <TextBlock Foreground="Black" Text="Load file"/>
+                    </Button>
+
+                    <Button Click="{x:Bind WDVM.ExecuteAsync}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
+                        <TextBlock Foreground="Black" Text="Run"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <TextBox TextWrapping="Wrap"  Background="#333333" IsReadOnly="True" Foreground="Cornsilk" Margin="8, 4, 8, 8" Text="{x:Bind WDVM.ResultText, Mode=TwoWay}" x:Name="OutTextBlock" Grid.Row="1">
+            </TextBox>
+        </Grid>
+
+        <!--> Right stages panel</!-->
+        <Grid x:Name="RightPanel" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="StagesPanel" Background="#222222" Margin="4,8,8,4" CornerRadius="4" Grid.Row="0">
+                <ScrollViewer x:Name="StagesScroller" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ListView x:Name="StagesList"  ItemsSource="{x:Bind WDVM.Stages, Mode=OneWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:StageWrapper">
+                                <StackPanel x:Name="StageStackPanel" Background="#333333" CornerRadius="4" Margin="8,8,8,8">
+                                    <TextBox Foreground="Cornsilk" Text="{x:Bind Name, Mode=TwoWay}"></TextBox>
+                                    <winex:NumberBoxInt32 Foreground="Black" Background="Cornsilk" Value="{x:Bind RepeatTimes, Mode=TwoWay}">
+                                        <winex:NumberBoxInt32.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="Repeat times" Foreground="Cornsilk"/>
+                                            </DataTemplate>
+                                        </winex:NumberBoxInt32.HeaderTemplate>
+                                    </winex:NumberBoxInt32>
+
+                                    <StackPanel x:Name="TokenizerStackPanel" Background="#494949" Margin="8,8,8,4" CornerRadius="4">
+                                        <ComboBox Foreground="Black" Margin="8,8,8,4" Background="Cornsilk" ItemsSource="{x:Bind TokenizerTypes, Mode=OneWay}"
+                                            SelectedItem="{x:Bind SelectedTokenizerType, Mode=TwoWay}">
+                                            <ComboBox.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="Tokenizer type" Foreground="Cornsilk"/>
+                                                </DataTemplate>
+                                            </ComboBox.HeaderTemplate>
+
+                                        </ComboBox>
+
+                                        <!--#region Tokenizers-->
+                                        <StackPanel x:Name="BlockTokenizerStackpanel" x:Load="{x:Bind UsingBlockTokenizer, Mode=OneWay}"
+                                            Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
+                                            <winex:NumberBoxInt32 x:Name="BlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                     Value="{x:Bind BlockSize, Mode=TwoWay}" Minimum="1">
+                                                <winex:NumberBoxInt32.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Block size" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </winex:NumberBoxInt32.HeaderTemplate>
+                                            </winex:NumberBoxInt32>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="SeparatorTokenizerStackPanel" x:Load="{x:Bind UsingSeparatorTokenizer, Mode=OneWay}" 
+                                            Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
+                                            <TextBox x:Name="SeparatorTextBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                     Text="{x:Bind Separator, Mode=TwoWay}">
+                                                <TextBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Separator" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </TextBox.HeaderTemplate>
+                                            </TextBox>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="RandomBlockTokenizerStackPanel" x:Load="{x:Bind UsingRandomTokenizer, Mode=OneWay}"
+                                             Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
+                                            <NumberBox x:Name="MinBlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                 Value="{x:Bind MinBlockSize, Mode=TwoWay}" Minimum="1">
+                                                <NumberBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Min Block size" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </NumberBox.HeaderTemplate>
+                                            </NumberBox>
+
+                                            <NumberBox x:Name="MaxBlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                 Value="{x:Bind MaxBlockSize, Mode=TwoWay}" Minimum="1">
+                                                <NumberBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Max Block size" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </NumberBox.HeaderTemplate>
+                                            </NumberBox>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="SmartTokenizerStackPanel" x:Load="{x:Bind UsingSmartTokenizer, Mode=OneWay}" 
+                                            Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
+                                            <winex:NumberBoxInt32 x:Name="IterationsBox" Value="{x:Bind IterationsCount, Mode=TwoWay}" Minimum="1">
+                                                <winex:NumberBoxInt32.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Iterations count" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </winex:NumberBoxInt32.HeaderTemplate>
+                                            </winex:NumberBoxInt32>
+
+                                            <winex:NumberBoxInt32 x:Name="MaxLengthBox" Value="{x:Bind MaxTokenLength, Mode=TwoWay}" Minimum="2">
+                                                <winex:NumberBoxInt32.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Max token length" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </winex:NumberBoxInt32.HeaderTemplate>
+                                            </winex:NumberBoxInt32>
+
+                                            <winex:NumberBoxInt32 x:Name="TopKBox" Value="{x:Bind TokenizerTopK, Mode=TwoWay}" Minimum="1">
+                                                <winex:NumberBoxInt32.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Top K" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </winex:NumberBoxInt32.HeaderTemplate>
+                                            </winex:NumberBoxInt32>
+                                        </StackPanel>
+                                        <!--#endregion-->
+
+                                        <Button Click="{x:Bind ClearCash}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
+                                            <TextBlock Foreground="Black" Text="Clear cash"></TextBlock>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <StackPanel x:Name="GeneratorStackPaner" Background="#4A4A4A" Margin="8,4,8,8" CornerRadius="4">
+                                        <ComboBox Foreground="Black" Margin="8,8,8,8" Background="Cornsilk" ItemsSource="{x:Bind GeneratorTypes, Mode=OneWay}"
+                                        SelectedItem="{x:Bind SelectedGeneratorType, Mode=TwoWay}">
+                                            <ComboBox.HeaderTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="Generator type" Foreground="Cornsilk"/>
+                                                </DataTemplate>
+                                            </ComboBox.HeaderTemplate>
+                                        </ComboBox>
+
+                                        <!--#region Generators-->
+                                        <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#555555"
+                                            Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
+                                            <NumberBox x:Name="OutputSizeNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                     Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
+                                                <NumberBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Output size (tokens count)" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </NumberBox.HeaderTemplate>
+                                            </NumberBox>
+
+                                            <NumberBox x:Name="TopKNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                    Value="{x:Bind TopK, Mode=TwoWay}" Minimum="1">
+                                                <NumberBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Top K" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </NumberBox.HeaderTemplate>
+                                            </NumberBox>
+
+                                            <NumberBox x:Name="RandomTokenNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                    Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
+                                                <NumberBox.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Random token chance [0..1]" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </NumberBox.HeaderTemplate>
+                                            </NumberBox>
+
+                                            <TextBlock Text="Enable tokens separator" Foreground="Cornsilk"/>
+                                            <CheckBox x:Name="UseDebugSeparatorCheckBox" IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <!--#endregion-->
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
+
+            <Grid x:Name="AddPanel" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Click="{x:Bind WDVM.AddStage}" Margin="8, 4, 8, 8" Background="Cornsilk" Grid.Column="1" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+                    <TextBlock Text="+" Foreground="Black"></TextBlock>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</winex:WindowEx>

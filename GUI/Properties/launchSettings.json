@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WD.GUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WD.GUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
