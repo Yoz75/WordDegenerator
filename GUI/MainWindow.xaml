@@ -95,7 +95,7 @@
                                                      Value="{x:Bind BlockSize, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Block size" Foreground="Cornsilk"/>
+                                                        <TextBlock Text="Token size" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
                                             </winex:NumberBoxInt32>
