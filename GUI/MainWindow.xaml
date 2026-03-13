@@ -136,7 +136,8 @@
 
                                         <StackPanel x:Name="SmartTokenizerStackPanel" x:Load="{x:Bind UsingSmartTokenizer, Mode=OneWay}" 
                                             Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                            <winex:NumberBoxInt32 x:Name="IterationsBox" Value="{x:Bind IterationsCount, Mode=TwoWay}" Minimum="1">
+                                            <winex:NumberBoxInt32 x:Name="IterationsBox" Background="Cornsilk" Foreground="Black" 
+                                                Value="{x:Bind IterationsCount, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="Iterations count" Foreground="Cornsilk"/>
@@ -144,7 +145,8 @@
                                                 </winex:NumberBoxInt32.HeaderTemplate>
                                             </winex:NumberBoxInt32>
 
-                                            <winex:NumberBoxInt32 x:Name="MaxLengthBox" Value="{x:Bind MaxTokenLength, Mode=TwoWay}" Minimum="2">
+                                            <winex:NumberBoxInt32 x:Name="MaxLengthBox" Background="Cornsilk" Foreground="Black"
+                                                Value="{x:Bind MaxTokenLength, Mode=TwoWay}" Minimum="2">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="Max token length" Foreground="Cornsilk"/>
@@ -152,7 +154,8 @@
                                                 </winex:NumberBoxInt32.HeaderTemplate>
                                             </winex:NumberBoxInt32>
 
-                                            <winex:NumberBoxInt32 x:Name="TopKBox" Value="{x:Bind TokenizerTopK, Mode=TwoWay}" Minimum="1">
+                                            <winex:NumberBoxInt32 x:Name="TopKBox" Background="Cornsilk" Foreground="Black"
+                                                Value="{x:Bind TokenizerTopK, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
                                                         <TextBlock Text="Top K" Foreground="Cornsilk"/>
