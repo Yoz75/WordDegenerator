@@ -72,7 +72,7 @@ public class StageWrapper : ObservableObject
                 blockTokenizer.BlockSize = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -89,7 +89,7 @@ public class StageWrapper : ObservableObject
                 separatorTokenizer.Separator = value[0];
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -104,7 +104,7 @@ public class StageWrapper : ObservableObject
                 tokenizer.Min = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -119,7 +119,7 @@ public class StageWrapper : ObservableObject
                 tokenizer.Max = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -134,7 +134,7 @@ public class StageWrapper : ObservableObject
                 tokenizer.IterationsCount = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
     
@@ -149,7 +149,7 @@ public class StageWrapper : ObservableObject
                 tokenizer.MaxTokenLength = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -164,7 +164,7 @@ public class StageWrapper : ObservableObject
                 tokenizer.TopK = value;
             }
 
-            ClearCash();
+            ClearCashe();
         }
     }
 
@@ -287,7 +287,7 @@ public class StageWrapper : ObservableObject
     }
 
 
-    public void ClearCash()
+    public void ClearCashe()
     {
         if(Stage.Tokenizer is CashTokenizer tokenizer)
         {
