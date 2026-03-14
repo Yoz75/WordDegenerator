@@ -165,8 +165,8 @@
                                         </StackPanel>
                                         <!--#endregion-->
 
-                                        <Button Click="{x:Bind ClearCashe}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
-                                            <TextBlock Foreground="Black" Text="Clear cashe"></TextBlock>
+                                        <Button Click="{x:Bind ClearCache}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
+                                            <TextBlock Foreground="Black" Text="Clear cache"></TextBlock>
                                         </Button>
                                     </StackPanel>
 
