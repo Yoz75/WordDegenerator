@@ -51,7 +51,7 @@
                 </StackPanel>
             </Grid>
 
-            <TextBox TextWrapping="Wrap"  Background="#333333" IsReadOnly="True" Foreground="Cornsilk" Margin="8, 4, 8, 8" Text="{x:Bind WDVM.ResultText, Mode=TwoWay}" x:Name="OutTextBlock" Grid.Row="1">
+            <TextBox TextWrapping="Wrap" Background="#333333" IsReadOnly="True" Foreground="Cornsilk" Margin="8, 4, 8, 8" Text="{x:Bind WDVM.ResultText, Mode=TwoWay}" x:Name="OutTextBlock" Grid.Row="1">
             </TextBox>
         </Grid>
 
