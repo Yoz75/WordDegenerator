@@ -187,7 +187,7 @@
                                                      Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Output size (tokens count)" Foreground="Cornsilk"/>
+                                                        <TextBlock Text="Result Length" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
                                             </NumberBox>
