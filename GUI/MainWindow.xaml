@@ -38,20 +38,42 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBox TextWrapping="Wrap" Foreground="Cornsilk" Text="{x:Bind WDVM.InputText, Mode=TwoWay}" Margin="8,8,4,4" IsSpellCheckEnabled="False" AcceptsReturn="True"
-                     x:Name="InputTextBox" Background="#333333" CornerRadius="4" Grid.Column="0"></TextBox>
+                     x:Name="InputTextBox" Background="#333333" CornerRadius="4" Grid.Column="0">
+                    <ToolTipService.ToolTip>
+                        <ToolTip MaxWidth="700" MaxHeight="600">
+                            <TextBlock x:Uid="InputTextBoxTooltip"/>
+                        </ToolTip>
+                    </ToolTipService.ToolTip>
+                </TextBox>
 
                 <StackPanel Grid.Column="1" Margin="4,8,8,4" Background="#333333" CornerRadius="4">
                     <Button Click="{x:Bind WDVM.LoadFileAsync}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
-                        <TextBlock Foreground="Black" Text="Load file"/>
+                        <TextBlock Foreground="Black" x:Uid="LoadFileButtonText"/>
+                        <ToolTipService.ToolTip>
+                            <ToolTip MaxWidth="700" MaxHeight="600">
+                                <TextBlock TextWrapping="Wrap" x:Uid="LoadFileButtonTooltip"/>
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
                     </Button>
 
                     <Button Click="{x:Bind WDVM.ExecuteAsync}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
-                        <TextBlock Foreground="Black" Text="Run"/>
+                        <TextBlock Foreground="Black" x:Uid="ExecuteButtonText"/>
+
+                        <ToolTipService.ToolTip>
+                            <ToolTip MaxWidth="700" MaxHeight="600">
+                                <TextBlock x:Uid="ExecuteButtonTooltip"/>
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
                     </Button>
                 </StackPanel>
             </Grid>
 
             <TextBox TextWrapping="Wrap" Background="#333333" IsReadOnly="True" Foreground="Cornsilk" Margin="8, 4, 8, 8" Text="{x:Bind WDVM.ResultText, Mode=TwoWay}" x:Name="OutTextBlock" Grid.Row="1">
+                <ToolTipService.ToolTip>
+                    <ToolTip MaxWidth="700" MaxHeight="600">
+                        <TextBlock x:Uid="OutputTextBoxTooltip"/>
+                    </ToolTip>
+                </ToolTipService.ToolTip>
             </TextBox>
         </Grid>
 
@@ -72,9 +94,15 @@
                                     <winex:NumberBoxInt32 Foreground="Black" Background="Cornsilk" Value="{x:Bind RepeatTimes, Mode=TwoWay}">
                                         <winex:NumberBoxInt32.HeaderTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="Repeat times" Foreground="Cornsilk"/>
+                                                <TextBlock x:Uid="StageRepeatTimesHeader" Foreground="Cornsilk"/>
                                             </DataTemplate>
                                         </winex:NumberBoxInt32.HeaderTemplate>
+
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip MaxWidth="700" MaxHeight="600">
+                                                <TextBlock x:Uid="StageRepeatTimesTooltip"/>
+                                            </ToolTip>
+                                        </ToolTipService.ToolTip>
                                     </winex:NumberBoxInt32>
 
                                     <StackPanel x:Name="TokenizerStackPanel" Background="#494949" Margin="8,8,8,4" CornerRadius="4">
@@ -82,10 +110,15 @@
                                             SelectedItem="{x:Bind SelectedTokenizerType, Mode=TwoWay}">
                                             <ComboBox.HeaderTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="Tokenizer type" Foreground="Cornsilk"/>
+                                                    <TextBlock x:Uid="SelectedTokenizerText" Foreground="Cornsilk"/>
                                                 </DataTemplate>
                                             </ComboBox.HeaderTemplate>
 
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip MaxWidth="700" MaxHeight="600">
+                                                    <TextBlock x:Uid="SelectedTokenizerTooltip"/>
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
                                         </ComboBox>
 
                                         <!--#region Tokenizers-->
@@ -95,9 +128,15 @@
                                                      Value="{x:Bind BlockSize, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Token size" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="BlockTokenizerBlockSizeText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock x:Uid="BlockTokenizerBlockSizeTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </winex:NumberBoxInt32>
                                         </StackPanel>
 
@@ -107,9 +146,15 @@
                                                      Text="{x:Bind Separator, Mode=TwoWay}">
                                                 <TextBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Separator" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="SeparatorTokenizerSeparatorText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </TextBox.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock x:Uid="SeparatorTokenizerSeparatorTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </TextBox>
                                         </StackPanel>
 
@@ -119,18 +164,30 @@
                                                  Value="{x:Bind MinBlockSize, Mode=TwoWay}" Minimum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Min Block size" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="RandomBlockTokenizerMinSizeText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock x:Uid="RandomBlockTokenizerMinSizeTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </NumberBox>
 
                                             <NumberBox x:Name="MaxBlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
                                                  Value="{x:Bind MaxBlockSize, Mode=TwoWay}" Minimum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Max Block size" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="RandomBlockTokenizerMaxSizeText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock x:Uid="RandomBlockTokenizerMaxSizeTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </NumberBox>
                                         </StackPanel>
 
@@ -140,33 +197,57 @@
                                                 Value="{x:Bind IterationsCount, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Iterations count" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="SmartTokenizerIterationsCountText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerIterationsCountTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </winex:NumberBoxInt32>
 
                                             <winex:NumberBoxInt32 x:Name="MaxLengthBox" Background="Cornsilk" Foreground="Black"
                                                 Value="{x:Bind MaxTokenLength, Mode=TwoWay}" Minimum="2">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Max token length" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="SmartTokenizerMaxTokenLengthText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerMaxTokenLengthTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </winex:NumberBoxInt32>
 
                                             <winex:NumberBoxInt32 x:Name="TopKBox" Background="Cornsilk" Foreground="Black"
                                                 Value="{x:Bind TokenizerTopK, Mode=TwoWay}" Minimum="1">
                                                 <winex:NumberBoxInt32.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Top K" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="SmartTokenizerTopKText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
                                             </winex:NumberBoxInt32>
+
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip MaxWidth="700" MaxHeight="600">
+                                                    <TextBlock x:Uid="SmartTokenizerTopKTooltip"/>
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
                                         </StackPanel>
                                         <!--#endregion-->
 
                                         <Button Click="{x:Bind ClearCache}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
-                                            <TextBlock Foreground="Black" Text="Clear cache"></TextBlock>
+                                            <TextBlock Foreground="Black" x:Uid="ClearTokenizerCacheText"/>
+
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip MaxWidth="700" MaxHeight="600">
+                                                    <TextBlock TextWrapping="Wrap" x:Uid="ClearTokenizerCacheTooltip"/>
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
                                         </Button>
                                     </StackPanel>
 
@@ -175,9 +256,15 @@
                                         SelectedItem="{x:Bind SelectedGeneratorType, Mode=TwoWay}">
                                             <ComboBox.HeaderTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="Generator type" Foreground="Cornsilk"/>
+                                                    <TextBlock x:Uid="SelectedGeneratorText" Foreground="Cornsilk"/>
                                                 </DataTemplate>
                                             </ComboBox.HeaderTemplate>
+
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip MaxWidth="700" MaxHeight="600">
+                                                    <TextBlock TextWrapping="Wrap" x:Uid="SelectedGeneratorTooltip"/>
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
                                         </ComboBox>
 
                                         <!--#region Generators-->
@@ -187,31 +274,56 @@
                                                      Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Result Length" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="DefaultGeneratorResultLengthText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorResultLengthTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </NumberBox>
 
                                             <NumberBox x:Name="TopKNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
                                                     Value="{x:Bind TopK, Mode=TwoWay}" Minimum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Top K" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="DefaultGeneratorTopKText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
+
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorTopKTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </NumberBox>
 
                                             <NumberBox x:Name="RandomTokenNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
                                                     Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
                                                 <NumberBox.HeaderTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="Random token chance [0..1]" Foreground="Cornsilk"/>
+                                                        <TextBlock x:Uid="DefaultGeneratorRandomTokenText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </NumberBox.HeaderTemplate>
+
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorRandomTokenTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
                                             </NumberBox>
 
-                                            <TextBlock Text="Enable tokens separator" Foreground="Cornsilk"/>
-                                            <CheckBox x:Name="UseDebugSeparatorCheckBox" IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}"/>
+                                            <TextBlock x:Uid="DefaultGeneratorEnableSeparatorText" Foreground="Cornsilk"/>
+                                            <CheckBox x:Name="UseDebugSeparatorCheckBox" IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorEnableSeparatorTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
+                                            </CheckBox>
                                         </StackPanel>
                                         <!--#endregion-->
                                     </StackPanel>

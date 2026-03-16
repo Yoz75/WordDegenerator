@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="InputTextBoxTooltip.Text" xml:space="preserve">
+    <value>Текст отсюда используется в качестве ввода для генератора</value>
+  </data>
+  <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
+    <value>Загрузить ввод генератора из файла</value>
+  </data>
+  <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
+    <value>Запустить генератор! Заметка: попробуйте увеличить Top K или длину результата, если вы видите странный вывод</value>
+  </data>
+  <data name="SeparatorTokenizerSeparatorTooltip.Text" xml:space="preserve">
+    <value>**Один символ**, используемый для разделения текста на токены</value>
+  </data>
+  <data name="BlockTokenizerBlockSizeTooltip.Text" xml:space="preserve">
+    <value>Устанавливает размер каждого токена</value>
+  </data>
+  <data name="StageRepeatTimesTooltip.Text" xml:space="preserve">
+    <value>Сколько раз повторить данную стадию? Ввод каждой следующей стадии -- вывод предыдущей</value>
+  </data>
+  <data name="SmartTokenizerIterationsCountTooltip.Text" xml:space="preserve">
+    <value>Устанавливает количество итераций токенайзера. Каждая итерация соединяет 2 старых токена в 1 новый.Чем больше это значение, тем дольше будет токенизация, но тем "качественнее" будут токены</value>
+  </data>
+  <data name="OutputTextBoxTooltip.Text" xml:space="preserve">
+    <value>Эта область содержит вывод генератора</value>
+  </data>
+  <data name="SmartTokenizerMaxTokenLengthTooltip.Text" xml:space="preserve">
+    <value>Устанавливает максимальную длину токена. Пары, которые в совокупности имеют большую длину, не могут быть соединены в следующий токен. Если больше нет пар с удовлетворяющей условия общей диной, токенизация останавливается</value>
+  </data>
+  <data name="SelectedTokenizerTooltip.Text" xml:space="preserve">
+    <value>Выбранная стратегия для превращения графа токенов в читаемый человеком текст. См. больше в документации</value>
+  </data>
+  <data name="DefaultGeneratorResultLengthTooltip.Text" xml:space="preserve">
+    <value>Устанавливает количество сгенерированных токенов</value>
+  </data>
+  <data name="SmartTokenizerTopKTooltip.Text" xml:space="preserve">
+    <value>Устанавливает количество самых частых пар, среди которых 1 будет случайно выбрана для превращения в токен</value>
+  </data>
+  <data name="DefaultGeneratorTopKTooltip.Text" xml:space="preserve">
+    <value>Установить количество самых частых токенов, среди которых 1 будет случайно выбран и записан в текст. Значения типа 1 или 2 могут создавать странный вывод</value>
+  </data>
+  <data name="DefaultGeneratorRandomTokenTooltip.Text" xml:space="preserve">
+    <value>Устанавливает вероятность выбора следующего случайного токена в диапазоне [0..1]. Значение 1 означает выбор только случайных токенов. Значение 0 означает выбор только токенов, следующих за предыдущим (однако, следующий токен будет сгенерирован случайным образом, если последующих токенов нет).</value>
+  </data>
+  <data name="ClearTokenizerCacheTooltip.Text" xml:space="preserve">
+    <value>Некоторые токенайзеры занимают слишком большое время для создания токенов, а потому Word Degenerator кеширует последнюю токенизацию. Эта кнопка очищает кеш токенизатора и в следующую генерацию придётся пересоздавать токены</value>
+  </data>
+  <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
+    <value>Включить разделитель токенов, когда чекбокс включен</value>
+  </data>
+  <data name="LoadFileButtonText.Text" xml:space="preserve">
+    <value>Загрузить из файла</value>
+  </data>
+  <data name="ExecuteButtonText.Text" xml:space="preserve">
+    <value>Выполнить</value>
+  </data>
+  <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
+    <value>Кол-во повторений</value>
+  </data>
+  <data name="BlockTokenizerBlockSizeText.Text" xml:space="preserve">
+    <value>Размер блока</value>
+  </data>
+  <data name="SeparatorTokenizerSeparatorText.Text" xml:space="preserve">
+    <value>Разделитель</value>
+  </data>
+  <data name="SmartTokenizerIterationsCountText.Text" xml:space="preserve">
+    <value>Кол-во итераций</value>
+  </data>
+  <data name="SmartTokenizerMaxTokenLengthText.Text" xml:space="preserve">
+    <value>Максимальный размер токена</value>
+  </data>
+  <data name="SmartTokenizerTopKText.Text" xml:space="preserve">
+    <value>Top K</value>
+  </data>
+  <data name="ClearTokenizerCacheText.Text" xml:space="preserve">
+    <value>Очистить кэш</value>
+  </data>
+  <data name="RandomBlockTokenizerMinSizeTooltip.Text" xml:space="preserve">
+    <value>Минимальный размер токена. Это значение должно быть меньше максимального размера</value>
+  </data>
+  <data name="SelectedGeneratorTooltip.Text" xml:space="preserve">
+    <value>Выбранная стратегия для токенизации ввода. См. больше в документации</value>
+  </data>
+  <data name="RandomBlockTokenizerMaxSizeTooltip.Text" xml:space="preserve">
+    <value>Максимальный размер токена. Это значение должно быть больше минимального размера</value>
+  </data>
+  <data name="SelectedTokenizerText.Text" xml:space="preserve">
+    <value>Выбранный токенайзер</value>
+  </data>
+  <data name="RandomBlockTokenizerMinSizeText.Text" xml:space="preserve">
+    <value>Минимальный размер токена</value>
+  </data>
+  <data name="RandomBlockTokenizerMaxSizeText.Text" xml:space="preserve">
+    <value>Максимальный размер блока</value>
+  </data>
+  <data name="SelectedGeneratorText.Text" xml:space="preserve">
+    <value>Выбранный генератор</value>
+  </data>
+  <data name="DefaultGeneratorResultLengthText.Text" xml:space="preserve">
+    <value>Длина результата</value>
+  </data>
+  <data name="DefaultGeneratorTopKText.Text" xml:space="preserve">
+    <value>Top K</value>
+  </data>
+  <data name="DefaultGeneratorRandomTokenText.Text" xml:space="preserve">
+    <value>Шанс случайного токена</value>
+  </data>
+  <data name="DefaultGeneratorEnableSeparatorText.Text" xml:space="preserve">
+    <value>Включить разделитель токенов</value>
+  </data>
+</root>

@@ -65,4 +65,9 @@
     <WindowsPackageType>None</WindowsPackageType>
     <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <PRIResource Update="Default.resw">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </PRIResource>
+  </ItemGroup>
 </Project>
