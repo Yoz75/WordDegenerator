@@ -65,7 +65,7 @@ public class DefaultTextGenerator : ITextGenerator
         for(int i = 0; i < OutputSize; i++)
         {
             sb.Append(current.Value.Value);
-            if(UseSeparator) sb.Append("|");
+            if(UseSeparator) sb.Append('|');
 
             if(Random.Shared.NextDouble() < RandomTokenChance || !TrySelectRandomNeighbor(current, out current!))
             {
