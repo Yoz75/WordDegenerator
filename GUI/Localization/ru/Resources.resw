@@ -225,4 +225,10 @@
   <data name="DefaultGeneratorEnableSeparatorText.Text" xml:space="preserve">
     <value>Включить разделитель токенов</value>
   </data>
+  <data name="SmartTokenizerMinPairOccurrences.Text" xml:space="preserve">
+    <value>Минимальное кол-во включений пары</value>
+  </data>
+  <data name="SmartTokenizerMinPairOccurrencesTooltip.Text" xml:space="preserve">
+    <value>Пара токенов может быть соединена только лишь если она встречается в тексте &gt;= [значение] раз. Предупреждает появление слишком больших токенов, которые появляются во всём тексте пару раз.</value>
+  </data>
 </root>

@@ -80,6 +80,19 @@ public sealed class SmartTokenizer : CashTokenizer
         }
     } = 3;
 
+    /// <summary>
+    /// Minimal count of pair occurrences to merge it in a single token
+    /// </summary>
+    public int MinPairOccurrences
+    {
+        get => field;
+        set
+        {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value);
+            field = value;
+        }
+    }
+
     protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
     {
         Graph<VertexWeightInfo, EdgeWeightInfo> result = [];
@@ -97,20 +110,24 @@ public sealed class SmartTokenizer : CashTokenizer
 
         for(int i = 0; i < IterationsCount; i++)
         {
-            Dictionary<Pair, int> pairCounts = [];
+            Dictionary<Pair, int> pairOccurrencesCounts = [];
             PriorityQueue<Pair, int> pairs = new(new InversedComparer());
 
             LinkedListNode<int>? current = nodes.First;
             while(current != null && current.Next != null)
             {
                 Pair pair = new(current.Value, current.Next.Value);
-                TryUpdateOrAddNode(pairCounts, pairs, pair);
+                TryUpdateOrAddNode(pairOccurrencesCounts, pair);
 
                 current = current.Next;
             }
 
-            foreach(var pair in pairCounts)
+            foreach(var pair in pairOccurrencesCounts)
             {
+                // Include only those pairs, that occurred greater or equal MinPairOccurred times
+                var pairOccurrencesCount = pairOccurrencesCounts[pair.Key];
+                if(pairOccurrencesCount < MinPairOccurrences) continue;
+
                 pairs.Enqueue(pair.Key, pair.Value);
             }
 
@@ -126,7 +143,7 @@ public sealed class SmartTokenizer : CashTokenizer
         GenerateTokens();
         return result;
 
-        bool TryUpdateOrAddNode(Dictionary<Pair, int> pairCounts, PriorityQueue<Pair, int> pairs, Pair pair)
+        bool TryUpdateOrAddNode(Dictionary<Pair, int> pairCounts, Pair pair)
         {
             if(id2Text[pair.Left].Length + id2Text[pair.Right].Length > MaxTokenLength) return false;
 

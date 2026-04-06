@@ -168,6 +168,21 @@ public class StageWrapper : ObservableObject
         }
     }
 
+    public int MinPairOccurrences
+    {
+        get => field;
+        set
+        {
+            SetProperty(ref field, value);
+            if(Stage.Tokenizer is SmartTokenizer tokenizer)
+            {
+                tokenizer.MinPairOccurrences = value;
+            }
+
+            ClearCache();
+        }
+    }
+
     // Generator parameters:
     public int OutputSize
     {

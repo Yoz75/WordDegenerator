@@ -225,4 +225,10 @@
   <data name="DefaultGeneratorEnableSeparatorText.Text" xml:space="preserve">
     <value>Enable tokens separator</value>
   </data>
+  <data name="SmartTokenizerMinPairOccurrences.Text" xml:space="preserve">
+    <value>Minimal pair occurrences</value>
+  </data>
+  <data name="SmartTokenizerMinPairOccurrencesTooltip.Text" xml:space="preserve">
+    <value>A pair of tokens can be merged only and only if it occurres in the text &gt;= [this value]. Prevents creating of too large tokens that occur in the text a couple of times</value>
+  </data>
 </root>

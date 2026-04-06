@@ -230,13 +230,29 @@
                                                         <TextBlock x:Uid="SmartTokenizerTopKText" Foreground="Cornsilk"/>
                                                     </DataTemplate>
                                                 </winex:NumberBoxInt32.HeaderTemplate>
-                                            </winex:NumberBoxInt32>
-
+                                                
                                             <ToolTipService.ToolTip>
                                                 <ToolTip MaxWidth="700" MaxHeight="600">
-                                                    <TextBlock x:Uid="SmartTokenizerTopKTooltip"/>
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerTopKTooltip"/>
                                                 </ToolTip>
                                             </ToolTipService.ToolTip>
+                                            </winex:NumberBoxInt32>
+
+                                            <winex:NumberBoxInt32 x:Name="MinPairOccurrences" Background="Cornsilk" Foreground="Black"
+                                                Value="{x:Bind MinPairOccurrences, Mode=TwoWay}" Minimum="1">
+                                                <winex:NumberBoxInt32.HeaderTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock x:Uid="SmartTokenizerMinPairOccurrences" Foreground="Cornsilk"/>
+                                                    </DataTemplate>
+                                                </winex:NumberBoxInt32.HeaderTemplate>
+                                                
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+                                                        <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerMinPairOccurrencesTooltip"/>
+                                                    </ToolTip>
+                                                </ToolTipService.ToolTip>
+                                            </winex:NumberBoxInt32>
+                                            
                                         </StackPanel>
                                         <!--#endregion-->
 
