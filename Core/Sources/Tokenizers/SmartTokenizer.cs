@@ -68,7 +68,7 @@ public sealed class SmartTokenizer : CashTokenizer
             System.ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value);
             field = value;
         }
-    }
+    } = 2;
 
     public int TopK
     {
@@ -91,7 +91,7 @@ public sealed class SmartTokenizer : CashTokenizer
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(value);
             field = value;
         }
-    }
+    } = 1;
 
     protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
     {
