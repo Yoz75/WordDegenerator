@@ -120,12 +120,6 @@
   <data name="InputTextBoxTooltip.Text" xml:space="preserve">
     <value>The text of this box is used as input for the text generator</value>
   </data>
-  <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
-    <value>Load the content of input text box from a .txt file (actually you can load all kind of data and get some strange result, but rename the extension of file to .txt)</value>
-  </data>
-  <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
-    <value>Run the generator! Note: try to increase generator's Top K or result length if you see strange output</value>
-  </data>
   <data name="SeparatorTokenizerSeparatorTooltip.Text" xml:space="preserve">
     <value>A **single character** that will divide text in separated tokens</value>
   </data>
@@ -233,5 +227,11 @@
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
     <value>Load input from...</value>
+  </data>
+  <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
+    <value>Load the content of input text box from a .txt file (actually you can load all kind of data and get some strange result, but rename the extension of file to .txt)</value>
+  </data>
+  <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
+    <value>Run the generator. Hotkey: F5</value>
   </data>
 </root>

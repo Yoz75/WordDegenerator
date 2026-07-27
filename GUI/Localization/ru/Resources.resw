@@ -120,12 +120,6 @@
   <data name="InputTextBoxTooltip.Text" xml:space="preserve">
     <value>Текст отсюда используется в качестве ввода для генератора</value>
   </data>
-  <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
-    <value>Загрузить ввод генератора из файла</value>
-  </data>
-  <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
-    <value>Запустить генератор! Заметка: попробуйте увеличить Top K или длину результата, если вы видите странный вывод</value>
-  </data>
   <data name="SeparatorTokenizerSeparatorTooltip.Text" xml:space="preserve">
     <value>**Один символ**, используемый для разделения текста на токены</value>
   </data>
@@ -233,5 +227,11 @@
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
     <value>Загрузить ввод из...</value>
+  </data>
+  <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
+    <value>Загрузить ввод генератора из файла</value>
+  </data>
+  <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
+    <value>Запустить генератор. Хоткей: F5</value>
   </data>
 </root>
