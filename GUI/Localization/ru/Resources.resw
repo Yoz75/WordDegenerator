@@ -229,4 +229,9 @@
     <value>Пара токенов может быть соединена только лишь если она встречается в тексте &gt;= [значение] раз. Предупреждает появление слишком больших токенов, которые появляются во всём тексте пару раз.</value>
   </data>
   <data name="FileFlyoutButton.Content" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="LoadFileButton.Text" xml:space="preserve">
+    <value>Загрузить ввод из...</value>
+  </data>
 </root>
