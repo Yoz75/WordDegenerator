@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,13 @@ namespace GUI
         {
             InitializeComponent();
 
-            this.SetIcon("Assets/Icon.ico");
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(TitleBar);
+            /*TitleBar.IconSource = new ImageIconSource()
+            {
+                ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Icon.png"))
+            };*/
+            
             WDVM = new(WinRT.Interop.WindowNative.GetWindowHandle(this));
         }
     }

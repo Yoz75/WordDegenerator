@@ -165,10 +165,7 @@
   <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
     <value>Enables separator of tokens in output text box when checked</value>
   </data>
-  <data name="LoadFileButtonText.Text" xml:space="preserve">
-    <value>Load from file</value>
-  </data>
-  <data name="ExecuteButtonText.Text" xml:space="preserve">
+  <data name="ExecuteButton.Content" xml:space="preserve">
     <value>Run</value>
   </data>
   <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
@@ -230,5 +227,11 @@
   </data>
   <data name="SmartTokenizerMinPairOccurrencesTooltip.Text" xml:space="preserve">
     <value>A pair of tokens can be merged only and only if it occurres in the text &gt;= [this value]. Prevents creating of too large tokens that occur in the text a couple of times</value>
+  </data>
+  <data name="FileFlyoutButton.Content" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="LoadFileButton.Text" xml:space="preserve">
+    <value>Load input from...</value>
   </data>
 </root>
