@@ -121,7 +121,7 @@
                                 <DataTemplate x:DataType="local:StageWrapper">
                                     <StackPanel x:Name="StageStackPanel" Background="#333333" CornerRadius="4" Margin="8,8,8,8">
                                         <TextBox Foreground="Cornsilk" Text="{x:Bind Name, Mode=TwoWay}"></TextBox>
-                                        <winex:NumberBoxInt32 Foreground="Black" Background="Cornsilk" Value="{x:Bind RepeatTimes, Mode=TwoWay}">
+                                        <winex:NumberBoxInt32 Foreground="Black" Margin="8,0" Background="Cornsilk" Value="{x:Bind RepeatTimes, Mode=TwoWay}">
                                             <winex:NumberBoxInt32.HeaderTemplate>
                                                 <DataTemplate>
                                                     <TextBlock x:Uid="StageRepeatTimesHeader" Foreground="Cornsilk"/>
