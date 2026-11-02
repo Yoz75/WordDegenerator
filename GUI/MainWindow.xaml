@@ -43,7 +43,7 @@
             <Image x:Name="TitleBarIcon" Source="ms-appx:///Assets/StoreLogo.png" Grid.Column="1" HorizontalAlignment="Left" Width="16" Height="16" Margin="8,0,0,0"/>
             <TextBlock x:Name="TitleBarTextBlock" Text="App title" Style="{StaticResource CaptionTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" Margin="28,0,0,0"/>
 
-            <Button x:Name="FileFlyoutButton" x:Uid="FileFlyoutButton" Foreground="Cornsilk" Margin="4" Background="#111111" Grid.Column="2">
+            <Button x:Name="FileFlyoutButton" x:Uid="FileFlyoutButton" Foreground="Cornsilk" Margin="2" Background="#111111" Grid.Column="2">
                 <Button.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="{x:Bind WDVM.LoadFileAsync}" Background="#333333" HorizontalAlignment="Left" Foreground="Cornsilk" x:Uid="LoadFileButton">
@@ -55,7 +55,7 @@
                 </Button.Flyout>
             </Button>
 
-            <Button x:Name="ActionsFlyoutButton" x:Uid="ActionsFlyoutButton" Foreground="Cornsilk" Margin="4" Background="#111111" Grid.Column="3">
+            <Button x:Name="ActionsFlyoutButton" x:Uid="ActionsFlyoutButton" Foreground="Cornsilk" Margin="2" Background="#111111" Grid.Column="3">
                 <Button.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="{x:Bind WDVM.ExecuteAsync}" Background="#333333" Foreground="Cornsilk" x:Uid="ExecuteButton">
@@ -88,7 +88,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox TextWrapping="Wrap" Foreground="Cornsilk" Text="{x:Bind WDVM.InputText, Mode=TwoWay}" Margin="8,8,4,4" IsSpellCheckEnabled="False" AcceptsReturn="True"
+                    <TextBox TextWrapping="Wrap" Foreground="Cornsilk" Text="{x:Bind WDVM.InputText, Mode=TwoWay}" Margin="8,8,8,4" IsSpellCheckEnabled="False" AcceptsReturn="True"
                          x:Name="InputTextBox" Background="#333333" CornerRadius="4" Grid.Column="0">
                         <ToolTipService.ToolTip>
                             <ToolTip MaxWidth="700" MaxHeight="600">
