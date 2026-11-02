@@ -159,7 +159,7 @@
   <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
     <value>Enables separator of tokens in output text box when checked</value>
   </data>
-  <data name="ExecuteButton.Content" xml:space="preserve">
+  <data name="ExecuteButton.Text" xml:space="preserve">
     <value>Run</value>
   </data>
   <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
@@ -226,12 +226,15 @@
     <value>File</value>
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
-    <value>Load input from...</value>
+    <value>Load from...</value>
   </data>
   <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
-    <value>Load the content of input text box from a .txt file (actually you can load all kind of data and get some strange result, but rename the extension of file to .txt)</value>
+    <value>Load input from file</value>
   </data>
   <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
     <value>Run the generator. Hotkey: F5</value>
+  </data>
+  <data name="ActionsFlyoutButton.Content" xml:space="preserve">
+    <value>Actons</value>
   </data>
 </root>

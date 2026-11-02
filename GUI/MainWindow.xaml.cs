@@ -1,3 +1,4 @@
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -26,6 +28,7 @@ namespace GUI
     public sealed partial class MainWindow : WindowEx
     {
         public WDViewModel WDVM { get; }
+        private TitleBarRegionsController RegionsController;
 
         public MainWindow()
         {
@@ -33,12 +36,36 @@ namespace GUI
 
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(TitleBar);
-            /*TitleBar.IconSource = new ImageIconSource()
+
+            TitleBarRegionsController.Settings settings = new()
             {
-                ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/Icon.png"))
-            };*/
+                TitleBar = TitleBar,
+                LeftPaddingColumn = LeftPaddingColumn,
+                RightPaddingColumn = RightPaddingColumn,
+                AppWindow = AppWindow
+            };
+
+            TitleBar.Loaded += OnTitleBarLoaded;
+            TitleBar.SizeChanged += OnTitlebarSizeChanged;
             
+            RegionsController = new(settings);
+                        
             WDVM = new(WinRT.Interop.WindowNative.GetWindowHandle(this));
+        }
+
+        private void SetPassthroughElements()
+        {
+            RegionsController.SetPassthroughElements(TitleBarIcon, TitleBarTextBlock, FileFlyoutButton, ActionsFlyoutButton);
+        }
+
+        private void OnTitleBarLoaded(object sender, RoutedEventArgs e)
+        {
+            SetPassthroughElements();
+        }
+
+        private void OnTitlebarSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            SetPassthroughElements();
         }
     }
 }

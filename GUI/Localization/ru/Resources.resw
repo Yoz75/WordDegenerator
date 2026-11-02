@@ -159,7 +159,7 @@
   <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
     <value>Включить разделитель токенов, когда чекбокс включен</value>
   </data>
-  <data name="ExecuteButton.Content" xml:space="preserve">
+  <data name="ExecuteButton.Text" xml:space="preserve">
     <value>Выполнить</value>
   </data>
   <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
@@ -226,12 +226,15 @@
     <value>Файл</value>
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
-    <value>Загрузить ввод из...</value>
+    <value>Загрузить из...</value>
   </data>
   <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
-    <value>Загрузить ввод генератора из файла</value>
+    <value>Загрузить ввод из файла</value>
   </data>
   <data name="ExecuteButtonTooltip.Text" xml:space="preserve">
     <value>Запустить генератор. Хоткей: F5</value>
+  </data>
+  <data name="ActionsFlyoutButton.Content" xml:space="preserve">
+    <value>Действия</value>
   </data>
 </root>
