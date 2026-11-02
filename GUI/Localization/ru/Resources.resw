@@ -159,7 +159,7 @@
   <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
     <value>Включить разделитель токенов, когда чекбокс включен</value>
   </data>
-  <data name="ExecuteButton.Text" xml:space="preserve">
+  <data name="ExecuteButton.Content" xml:space="preserve">
     <value>Выполнить</value>
   </data>
   <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
@@ -227,6 +227,9 @@
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
     <value>Загрузить из...</value>
+  </data>
+  <data name="SaveFileButton.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
   </data>
   <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
     <value>Загрузить ввод из файла</value>

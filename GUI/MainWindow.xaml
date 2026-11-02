@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <!--2: file menu-->
                 <ColumnDefinition Width="Auto"/>
-                <!--3: edit menu-->
+                <!--3: execute button-->
                 <ColumnDefinition Width="Auto"/>
                 <!--4: unused scheisse-->
                 <ColumnDefinition Width="Auto"/>
@@ -40,8 +40,8 @@
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="TitleBarIcon" Source="ms-appx:///Assets/StoreLogo.png" Grid.Column="1" HorizontalAlignment="Left" Width="16" Height="16" Margin="8,0,0,0"/>
-            <TextBlock x:Name="TitleBarTextBlock" Text="App title" Style="{StaticResource CaptionTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" Margin="28,0,0,0"/>
+            <Image x:Name="TitleBarIcon" Source="/Assets/Icon.png" Grid.Column="1" HorizontalAlignment="Left" Width="16" Height="16" Margin="8,0,0,0"/>
+            <TextBlock x:Name="TitleBarTextBlock" Text="Word Degenerator" Style="{StaticResource CaptionTextBlockStyle}" Grid.Column="1" VerticalAlignment="Center" Margin="28,0,0,0"/>
 
             <Button x:Name="FileFlyoutButton" x:Uid="FileFlyoutButton" Foreground="Cornsilk" Margin="2" Background="#111111" Grid.Column="2">
                 <Button.Flyout>
@@ -51,20 +51,20 @@
                                 <KeyboardAccelerator Key="O" Modifiers="Control"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
-                    </MenuFlyout>
-                </Button.Flyout>
-            </Button>
 
-            <Button x:Name="ActionsFlyoutButton" x:Uid="ActionsFlyoutButton" Foreground="Cornsilk" Margin="2" Background="#111111" Grid.Column="3">
-                <Button.Flyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Click="{x:Bind WDVM.ExecuteAsync}" Background="#333333" Foreground="Cornsilk" x:Uid="ExecuteButton">
+                        <MenuFlyoutItem Click="{x:Bind WDVM.SaveFileAsync}" Background="#333333" HorizontalAlignment="Left" Foreground="Cornsilk" x:Uid="SaveFileButton">
                             <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Key="F5"/>
+                                <KeyboardAccelerator Key="S" Modifiers="Control"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                     </MenuFlyout>
                 </Button.Flyout>
+            </Button>
+
+            <Button x:Name="ExecuteButton" x:Uid="ExecuteButton" Click="{x:Bind WDVM.ExecuteAsync}" Background="Cornsilk" Foreground="Black" Grid.Column="3">
+                <Button.KeyboardAccelerators>
+                    <KeyboardAccelerator Key="F5"/>
+                </Button.KeyboardAccelerators>
             </Button>
         </Grid>
 

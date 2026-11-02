@@ -386,6 +386,18 @@ public class WDViewModel : ObservableObject
         WinRT.Interop.InitializeWithWindow.Initialize(picker, WindowHandle);
 
         StorageFile file = await picker.PickSingleFileAsync();
-        InputText = await File.ReadAllTextAsync(file.Path); //bruh that's a lot simpler than stream shit
+        InputText = File.ReadAllText(file.Path);
+    }
+
+    public async void SaveFileAsync()
+    {
+        FileSavePicker picker = new();
+        picker.DefaultFileExtension = ".txt";
+        picker.FileTypeChoices["Text file"] = [".txt"];
+
+        WinRT.Interop.InitializeWithWindow.Initialize(picker, WindowHandle);
+
+        StorageFile file = await picker.PickSaveFileAsync();
+        await File.WriteAllTextAsync(file.Path, ResultText);
     }
 }

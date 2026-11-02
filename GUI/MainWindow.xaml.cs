@@ -55,7 +55,7 @@ namespace GUI
 
         private void SetPassthroughElements()
         {
-            RegionsController.SetPassthroughElements(TitleBarIcon, TitleBarTextBlock, FileFlyoutButton, ActionsFlyoutButton);
+            RegionsController.SetPassthroughElements(TitleBarIcon, TitleBarTextBlock, FileFlyoutButton, ExecuteButton);
         }
 
         private void OnTitleBarLoaded(object sender, RoutedEventArgs e)

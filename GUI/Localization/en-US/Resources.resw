@@ -159,7 +159,7 @@
   <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
     <value>Enables separator of tokens in output text box when checked</value>
   </data>
-  <data name="ExecuteButton.Text" xml:space="preserve">
+  <data name="ExecuteButton.Content" xml:space="preserve">
     <value>Run</value>
   </data>
   <data name="StageRepeatTimesHeader.Text" xml:space="preserve">
@@ -227,6 +227,9 @@
   </data>
   <data name="LoadFileButton.Text" xml:space="preserve">
     <value>Load from...</value>
+  </data>
+  <data name="SaveFileButton.Text" xml:space="preserve">
+    <value>Save as...</value>
   </data>
   <data name="LoadFileButtonTooltip.Text" xml:space="preserve">
     <value>Load input from file</value>
