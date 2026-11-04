@@ -121,7 +121,7 @@
                                 <DataTemplate x:DataType="local:StageWrapper">
                                     <StackPanel x:Name="StageStackPanel" Background="#333333" CornerRadius="4" Margin="8,8,8,8">
                                         <TextBox Foreground="Cornsilk" Text="{x:Bind Name, Mode=TwoWay}"></TextBox>
-                                        <winex:NumberBoxInt32 Foreground="Black" Margin="8,0" Background="Cornsilk" Value="{x:Bind RepeatTimes, Mode=TwoWay}">
+                                        <winex:NumberBoxInt32 Margin="8,0" Background="#505050" Foreground="Cornsilk"  Value="{x:Bind RepeatTimes, Mode=TwoWay}">
                                             <winex:NumberBoxInt32.HeaderTemplate>
                                                 <DataTemplate>
                                                     <TextBlock x:Uid="StageRepeatTimesHeader" Foreground="Cornsilk"/>
@@ -135,8 +135,8 @@
                                             </ToolTipService.ToolTip>
                                         </winex:NumberBoxInt32>
 
-                                        <StackPanel x:Name="TokenizerStackPanel" Background="#494949" Margin="8,8,8,4" CornerRadius="4">
-                                            <ComboBox Foreground="Black" Margin="8,8,8,4" Background="Cornsilk" ItemsSource="{x:Bind TokenizerTypes, Mode=OneWay}"
+                                        <StackPanel x:Name="TokenizerStackPanel" Background="#404040" Margin="8,8,8,4" CornerRadius="4">
+                                            <ComboBox Margin="8,8,8,4" Background="#505050" Foreground="Cornsilk" ItemsSource="{x:Bind TokenizerTypes, Mode=OneWay}"
                                                 SelectedItem="{x:Bind SelectedTokenizerType, Mode=TwoWay}">
                                                 <ComboBox.HeaderTemplate>
                                                     <DataTemplate>
@@ -154,7 +154,7 @@
                                             <!--#region Tokenizers-->
                                             <StackPanel x:Name="BlockTokenizerStackpanel" x:Load="{x:Bind UsingBlockTokenizer, Mode=OneWay}"
                                                 Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                                <winex:NumberBoxInt32 x:Name="BlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <winex:NumberBoxInt32 x:Name="BlockSizeBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind BlockSize, Mode=TwoWay}" Minimum="1">
                                                     <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
@@ -172,7 +172,7 @@
 
                                             <StackPanel x:Name="SeparatorTokenizerStackPanel" x:Load="{x:Bind UsingSeparatorTokenizer, Mode=OneWay}" 
                                                 Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                                <TextBox x:Name="SeparatorTextBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <TextBox x:Name="SeparatorTextBox" Background="#505050" Foreground="Cornsilk"  CornerRadius="4"
                                                          Text="{x:Bind Separator, Mode=TwoWay}">
                                                     <TextBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -190,7 +190,7 @@
 
                                             <StackPanel x:Name="RandomBlockTokenizerStackPanel" x:Load="{x:Bind UsingRandomTokenizer, Mode=OneWay}"
                                                  Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                                <NumberBox x:Name="MinBlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <NumberBox x:Name="MinBlockSizeBox" Background="#505050" Foreground="Cornsilk"  CornerRadius="4"
                                                      Value="{x:Bind MinBlockSize, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -205,7 +205,7 @@
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
 
-                                                <NumberBox x:Name="MaxBlockSizeBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <NumberBox x:Name="MaxBlockSizeBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                      Value="{x:Bind MaxBlockSize, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -223,7 +223,7 @@
 
                                             <StackPanel x:Name="SmartTokenizerStackPanel" x:Load="{x:Bind UsingSmartTokenizer, Mode=OneWay}" 
                                                 Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                                <winex:NumberBoxInt32 x:Name="IterationsBox" Background="Cornsilk" Foreground="Black" 
+                                                <winex:NumberBoxInt32 x:Name="IterationsBox" Background="#505050" Foreground="Cornsilk" 
                                                     Value="{x:Bind IterationsCount, Mode=TwoWay}" Minimum="1">
                                                     <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
@@ -238,7 +238,7 @@
                                                     </ToolTipService.ToolTip>
                                                 </winex:NumberBoxInt32>
 
-                                                <winex:NumberBoxInt32 x:Name="MaxLengthBox" Background="Cornsilk" Foreground="Black"
+                                                <winex:NumberBoxInt32 x:Name="MaxLengthBox" Background="#505050" Foreground="Cornsilk" 
                                                     Value="{x:Bind MaxTokenLength, Mode=TwoWay}" Minimum="2">
                                                     <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
@@ -253,7 +253,7 @@
                                                     </ToolTipService.ToolTip>
                                                 </winex:NumberBoxInt32>
 
-                                                <winex:NumberBoxInt32 x:Name="TopKBox" Background="Cornsilk" Foreground="Black"
+                                                <winex:NumberBoxInt32 x:Name="TopKBox" Background="#505050" Foreground="Cornsilk" 
                                                     Value="{x:Bind TokenizerTopK, Mode=TwoWay}" Minimum="1">
                                                     <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
@@ -268,7 +268,7 @@
                                                 </ToolTipService.ToolTip>
                                                 </winex:NumberBoxInt32>
 
-                                                <winex:NumberBoxInt32 x:Name="MinPairOccurrences" Background="Cornsilk" Foreground="Black"
+                                                <winex:NumberBoxInt32 x:Name="MinPairOccurrences" Background="#505050" Foreground="Cornsilk" 
                                                     Value="{x:Bind MinPairOccurrences, Mode=TwoWay}" Minimum="1">
                                                     <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
@@ -286,8 +286,8 @@
                                             </StackPanel>
                                             <!--#endregion-->
 
-                                            <Button Click="{x:Bind ClearCache}" Background="Cornsilk" HorizontalAlignment="Stretch" Margin="8">
-                                                <TextBlock Foreground="Black" x:Uid="ClearTokenizerCacheText"/>
+                                            <Button Click="{x:Bind ClearCache}" Background="#D70040" HorizontalAlignment="Stretch" Margin="8">
+                                                <TextBlock Foreground="White" x:Uid="ClearTokenizerCacheText"/>
 
                                                 <ToolTipService.ToolTip>
                                                     <ToolTip MaxWidth="700" MaxHeight="600">
@@ -297,8 +297,8 @@
                                             </Button>
                                         </StackPanel>
 
-                                        <StackPanel x:Name="GeneratorStackPaner" Background="#4A4A4A" Margin="8,4,8,8" CornerRadius="4">
-                                            <ComboBox Foreground="Black" Margin="8,8,8,8" Background="Cornsilk" ItemsSource="{x:Bind GeneratorTypes, Mode=OneWay}"
+                                        <StackPanel x:Name="GeneratorStackPaner" Background="#404040" Margin="8,4,8,8" CornerRadius="4">
+                                            <ComboBox Foreground="Cornsilk" Margin="8,8,8,8" Background="#505050" ItemsSource="{x:Bind GeneratorTypes, Mode=OneWay}"
                                             SelectedItem="{x:Bind SelectedGeneratorType, Mode=TwoWay}">
                                                 <ComboBox.HeaderTemplate>
                                                     <DataTemplate>
@@ -314,9 +314,9 @@
                                             </ComboBox>
 
                                             <!--#region Generators-->
-                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#555555"
-                                                Margin="8,4,8,8" Padding="4,4,4,4" CornerRadius="4">
-                                                <NumberBox x:Name="OutputSizeNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#4A4A4A"
+                                                Margin="8,4,8,8" Padding="4,4,4,4">
+                                                <NumberBox x:Name="OutputSizeNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -331,7 +331,7 @@
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
 
-                                                <NumberBox x:Name="TopKNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <NumberBox x:Name="TopKNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind TopK, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -347,7 +347,7 @@
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
 
-                                                <NumberBox x:Name="RandomTokenNumberBox" Background="Cornsilk" Foreground="Black" CornerRadius="4"
+                                                <NumberBox x:Name="RandomTokenNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
@@ -380,16 +380,8 @@
                     </ScrollViewer>
                 </Grid>
 
-                <Grid x:Name="AddPanel" Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Click="{x:Bind WDVM.AddStage}" Margin="8, 4, 8, 8" Background="Cornsilk" Grid.Column="1" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Right">
-                        <TextBlock Text="+" Foreground="Black"></TextBlock>
-                    </Button>
-                </Grid>
+                <Button x:Uid="AddStageButton" Click="{x:Bind WDVM.AddStage}"  Background="Cornsilk" 
+                    Foreground="Black" Grid.Row="1" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>   

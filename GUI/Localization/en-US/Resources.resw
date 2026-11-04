@@ -240,4 +240,7 @@
   <data name="ActionsFlyoutButton.Content" xml:space="preserve">
     <value>Actons</value>
   </data>
+  <data name="AddStageButton.Content" xml:space="preserve">
+    <value>Add stage</value>
+  </data>
 </root>
