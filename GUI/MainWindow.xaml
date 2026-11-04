@@ -116,12 +116,11 @@
 
                 <Grid x:Name="StagesPanel" Background="#222222" Margin="4,8,8,4" CornerRadius="4" Grid.Row="0">
                     <ScrollViewer x:Name="StagesScroller" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                        <ListView x:Name="StagesList"  ItemsSource="{x:Bind WDVM.Stages, Mode=OneWay}">
+                        <ListView x:Name="StagesList" ItemsSource="{x:Bind WDVM.Stages, Mode=OneWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local:StageWrapper">
                                     <StackPanel x:Name="StageStackPanel" Background="#333333" CornerRadius="4" Margin="8,8,8,8">
-                                        <TextBox Foreground="Cornsilk" Text="{x:Bind Name, Mode=TwoWay}"></TextBox>
-                                        <winex:NumberBoxInt32 Margin="8,0" Background="#505050" Foreground="Cornsilk"  Value="{x:Bind RepeatTimes, Mode=TwoWay}">
+                                        <winex:NumberBoxInt32 Margin="8,8" Background="#505050" Foreground="Cornsilk"  Value="{x:Bind RepeatTimes, Mode=TwoWay}">
                                             <winex:NumberBoxInt32.HeaderTemplate>
                                                 <DataTemplate>
                                                     <TextBlock x:Uid="StageRepeatTimesHeader" Foreground="Cornsilk"/>
@@ -136,8 +135,9 @@
                                         </winex:NumberBoxInt32>
 
                                         <StackPanel x:Name="TokenizerStackPanel" Background="#404040" Margin="8,8,8,4" CornerRadius="4">
-                                            <ComboBox Margin="8,8,8,4" Background="#505050" Foreground="Cornsilk" ItemsSource="{x:Bind TokenizerTypes, Mode=OneWay}"
-                                                SelectedItem="{x:Bind SelectedTokenizerType, Mode=TwoWay}">
+                                            <ComboBox Margin="8,0,8,4"
+                                                      Background="#505050" Foreground="Cornsilk" ItemsSource="{x:Bind TokenizerTypes, Mode=OneWay}"
+                                                SelectedItem="{Binding SelectedTokenizerType, Mode=TwoWay}">
                                                 <ComboBox.HeaderTemplate>
                                                     <DataTemplate>
                                                         <TextBlock x:Uid="SelectedTokenizerText" Foreground="Cornsilk"/>
@@ -260,12 +260,12 @@
                                                             <TextBlock x:Uid="SmartTokenizerTopKText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
                                                     </winex:NumberBoxInt32.HeaderTemplate>
-                                                
-                                                <ToolTipService.ToolTip>
-                                                    <ToolTip MaxWidth="700" MaxHeight="600">
+
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerTopKTooltip"/>
-                                                    </ToolTip>
-                                                </ToolTipService.ToolTip>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
                                                 </winex:NumberBoxInt32>
 
                                                 <winex:NumberBoxInt32 x:Name="MinPairOccurrences" Background="#505050" Foreground="Cornsilk" 
@@ -275,14 +275,14 @@
                                                             <TextBlock x:Uid="SmartTokenizerMinPairOccurrences" Foreground="Cornsilk"/>
                                                         </DataTemplate>
                                                     </winex:NumberBoxInt32.HeaderTemplate>
-                                                
+
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="SmartTokenizerMinPairOccurrencesTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </winex:NumberBoxInt32>
-                                            
+
                                             </StackPanel>
                                             <!--#endregion-->
 
@@ -298,8 +298,8 @@
                                         </StackPanel>
 
                                         <StackPanel x:Name="GeneratorStackPaner" Background="#404040" Margin="8,4,8,8" CornerRadius="4">
-                                            <ComboBox Foreground="Cornsilk" Margin="8,8,8,8" Background="#505050" ItemsSource="{x:Bind GeneratorTypes, Mode=OneWay}"
-                                            SelectedItem="{x:Bind SelectedGeneratorType, Mode=TwoWay}">
+                                            <ComboBox Margin="8,8,8,8" Background="#505050" Foreground="Cornsilk" ItemsSource="{x:Bind GeneratorTypes, Mode=OneWay}"
+                                            SelectedItem="{Binding SelectedGeneratorType, Mode=TwoWay}">
                                                 <ComboBox.HeaderTemplate>
                                                     <DataTemplate>
                                                         <TextBlock x:Uid="SelectedGeneratorText" Foreground="Cornsilk"/>
@@ -314,7 +314,7 @@
                                             </ComboBox>
 
                                             <!--#region Generators-->
-                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#4A4A4A"
+                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#404040"
                                                 Margin="8,4,8,8" Padding="4,4,4,4">
                                                 <NumberBox x:Name="OutputSizeNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
@@ -373,6 +373,10 @@
                                             </StackPanel>
                                             <!--#endregion-->
                                         </StackPanel>
+
+                                        <Button x:Uid="RemoveStageButton" Background="#D70040" Margin="8, 0, 0, 8" Click="RemoveStageButtonClick">
+                                            <FontIcon Glyph="&#xE74D;"/>
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -380,7 +384,7 @@
                     </ScrollViewer>
                 </Grid>
 
-                <Button x:Uid="AddStageButton" Click="{x:Bind WDVM.AddStage}"  Background="Cornsilk" 
+                <Button x:Name="AddStageButton" x:Uid="AddStageButton" Click="{x:Bind OnAddStageButtonClick}"  Background="Cornsilk" 
                     Foreground="Black" Grid.Row="1" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>

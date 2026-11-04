@@ -53,6 +53,11 @@ namespace GUI
             WDVM = new(WinRT.Interop.WindowNative.GetWindowHandle(this));
         }
 
+        private void OnAddStageButtonClick(object sender, RoutedEventArgs e)
+        {
+            WDVM.AddStage();
+        }
+
         private void SetPassthroughElements()
         {
             RegionsController.SetPassthroughElements(TitleBarIcon, TitleBarTextBlock, FileFlyoutButton, ExecuteButton);
@@ -66,6 +71,14 @@ namespace GUI
         private void OnTitlebarSizeChanged(object sender, SizeChangedEventArgs e)
         {
             SetPassthroughElements();
+        }
+
+        private void RemoveStageButtonClick(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button { DataContext: StageWrapper wrapper})
+            {
+                WDVM.RemoveStage(wrapper);
+            }
         }
     }
 }

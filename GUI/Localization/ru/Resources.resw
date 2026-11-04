@@ -243,4 +243,7 @@
   <data name="AddStageButton.Content" xml:space="preserve">
     <value>Добавить стадию</value>
   </data>
+  <data name="RemoveStageButton" xml:space="preserve">
+    <value>Удалить стадию</value>
+  </data>
 </root>

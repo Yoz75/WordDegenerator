@@ -35,15 +35,6 @@ public class StageWrapper : ObservableObject
 {
     public StageWrapper Self { get => this; }
 
-    public string Name
-    {
-        get => field;
-        set
-        {
-            SetProperty(ref field, value);
-        }
-    } = "New Stage"; 
-
     private WDGenerationStage Stage_;
     public ref WDGenerationStage Stage
     {
@@ -74,7 +65,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 3;
 
     public string Separator
     {
@@ -91,7 +82,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = " ";
 
     public int MinBlockSize
     {
@@ -106,7 +97,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 1;
 
     public int MaxBlockSize
     {
@@ -121,7 +112,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 3;
 
     public int IterationsCount
     {
@@ -136,8 +127,8 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
-    
+    } = 1500;
+
     public int MaxTokenLength
     {
         get => field;
@@ -151,7 +142,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 3;
 
     public int TokenizerTopK
     {
@@ -166,7 +157,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 3;
 
     public int MinPairOccurrences
     {
@@ -181,7 +172,7 @@ public class StageWrapper : ObservableObject
 
             ClearCache();
         }
-    }
+    } = 2;
 
     // Generator parameters:
     public int OutputSize
@@ -195,7 +186,7 @@ public class StageWrapper : ObservableObject
                 defaultGenerator.OutputSize = value;
             }
         }
-    }
+    } = 150;
 
     public int TopK
     {
@@ -208,7 +199,7 @@ public class StageWrapper : ObservableObject
                 defaultGenerator.TopK = value;
             }
         }
-    }
+    } = 5;
 
     public float RandomTokenChance
     {
@@ -221,7 +212,7 @@ public class StageWrapper : ObservableObject
                 defaultGenerator.RandomTokenChance = value;
             }
         }
-    }
+    } = 0;
 
     public bool UseDebugSeparator
     {
@@ -234,7 +225,7 @@ public class StageWrapper : ObservableObject
                 defaultGenerator.UseSeparator = value;
             }
         }
-    }
+    } = false;
 
     public ObservableCollection<TokenizerType> TokenizerTypes { get; } = [];
 
@@ -248,9 +239,6 @@ public class StageWrapper : ObservableObject
         get => field;
         set
         {
-            SetProperty(ref field, value);
-            UpdateTokenizerUsageProperties();
-
             Stage.Tokenizer = value switch
             {
                 TokenizerType.BlockTokenizer => Stage.Tokenizer is not BlockTokenizer ? new BlockTokenizer() : Stage.Tokenizer,
@@ -259,6 +247,9 @@ public class StageWrapper : ObservableObject
                 TokenizerType.SmartTokenizer => Stage.Tokenizer is not SmartTokenizer ? new SmartTokenizer() : Stage.Tokenizer,
                 _ => throw new ArgumentException("Selected creator type can't be added to stage!"),
             };
+
+            SetProperty(ref field, value);
+            UpdateTokenizerUsageProperties();
         }
     } = TokenizerType.BlockTokenizer;
 
@@ -312,15 +303,10 @@ public class StageWrapper : ObservableObject
 
     public StageWrapper()
     {
-        SelectedGeneratorType = GeneratorTypes[0];
-        BlockSize = 3;
-        OutputSize = 50;
-        TopK = 5;
-
         // Fuck c#, I could do this at compile time in D
-        TokenizerType[] values = (TokenizerType[])Enum.GetValues<TokenizerType>();
+        TokenizerType[] values = Enum.GetValues<TokenizerType>();
 
-        foreach( var value in values)
+        foreach(var value in values)
         {
             TokenizerTypes.Add(value);
         }
@@ -351,9 +337,14 @@ public class WDViewModel : ObservableObject
     public ObservableCollection<StageWrapper> Stages { get; } = new();
     private Task<string>? ExecuteTask;
 
-    public void AddStage(object sender, RoutedEventArgs e)
+    public void AddStage()
     {
         Stages.Add(new());
+    }
+
+    public void RemoveStage(StageWrapper wrapper)
+    {
+        Stages.Remove(wrapper);
     }
 
     public async Task ExecuteAsync()
