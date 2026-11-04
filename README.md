@@ -5,7 +5,7 @@
 By the way, Word Degenerator supports both Russian and English languages!
 
 # How to run it
-Word Degenerator supports **only** Windows 10.1506 & 11<br>
+Word Degenerator supports **only** Windows 10.1509 & 11<br>
 You can build the solution by yourself or download the latest release and unzip it. Inside the bin directory you'll find WordDegenerator.exe
 
 # How to use it
