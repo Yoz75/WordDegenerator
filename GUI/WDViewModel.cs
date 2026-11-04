@@ -56,7 +56,7 @@ public class StageWrapper : ObservableObject
         set
         {
             SetProperty(ref field, value);
-            Stage.RepeatTimes = (uint)value;
+            Stage.RepeatTimes = value;
         }
     } = 1;
 

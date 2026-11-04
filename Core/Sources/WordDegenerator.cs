@@ -14,7 +14,7 @@ public struct WDGenerationStage
     /// <summary>
     /// Count of repeating this stage. When this value is n and n > 1, <see cref="WordDegenerator"/> generates text from input and then n - 1 times "feeds" result itself
     /// </summary>
-    public uint RepeatTimes;
+    public int RepeatTimes;
 }
 
 public sealed class WordDegenerator
