@@ -273,9 +273,6 @@ public class StageWrapper : ObservableObject
         get => field;
         set
         {
-            SetProperty(ref field, value);
-            UpdateGeneratorUsageProps();
-
             switch(value)
             {
                 case TextGeneratorType.Default:
@@ -284,6 +281,9 @@ public class StageWrapper : ObservableObject
 
                 default: throw new ArgumentException("Selected generator type can't be added to stage!");
             }
+
+            SetProperty(ref field, value);
+            UpdateGeneratorUsageProps();
         }
     }
 
