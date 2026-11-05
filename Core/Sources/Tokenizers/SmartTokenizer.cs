@@ -104,7 +104,7 @@ public sealed class SmartTokenizer : CashTokenizer
 
         foreach(char c in text)
         {
-            var id = TryRegisterId(c.ToString());
+            var id = GetOrAddId(c.ToString());
             nodes.AddLast(id);
         }
 
@@ -135,7 +135,7 @@ public sealed class SmartTokenizer : CashTokenizer
             Pair mostFrequentPair = GetRandomFrequentPairAndRuinPairs(pairs);
 
             string couple = Pair2String(mostFrequentPair);
-            int newId = TryRegisterId(couple);
+            int newId = GetOrAddId(couple);
 
             ConnectPair(mostFrequentPair, newId);
         }
@@ -160,7 +160,7 @@ public sealed class SmartTokenizer : CashTokenizer
             return true;
         }
 
-        int TryRegisterId(string source)
+        int GetOrAddId(string source)
         {
             if(text2Id.TryGetValue(source, out var value))
             {
