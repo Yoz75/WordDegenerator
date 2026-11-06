@@ -226,15 +226,18 @@ public sealed class SmartTokenizer : CashTokenizer
         /// Get a random of TopK most frequent pairs and ruin the pairs queue (it removes some items)
         Pair GetRandomFrequentPairAndRuinPairs(PriorityQueue<Pair, int> pairs)
         {
-            var count = pairs.Count;
-            List<Pair> topKPairs = new(count);
+            /*
+             I tested it on War and Peace and stack didn't overflow... I hope it'll never overflow
+             */
+            var count = TopK < pairs.Count ? TopK : pairs.Count;
+            Span<Pair> topKPairs = stackalloc Pair[count];
 
-            for(int j = 0; j < TopK && j < count; j++)
+            for(int i = 0; i < count; i++)
             {
-                topKPairs.Add(pairs.Dequeue());
+                topKPairs[i] = pairs.Dequeue();
             }
 
-            var mostFrequentPair = topKPairs[Random.Shared.Next(topKPairs.Count)];
+            var mostFrequentPair = topKPairs[Random.Shared.Next(topKPairs.Length)];
             return mostFrequentPair;
         }
     }
