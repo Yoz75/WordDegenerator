@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -18,23 +17,35 @@ namespace GUI;
     ***************************************************************************************************************************************************************
  */
 
+/// <summary>
+/// Supported tokenizers
+/// </summary>
 public enum TokenizerType : byte
 {
+    /// <summary>
+    /// Uninitialzied value
+    /// </summary>
+    None,
     BlockTokenizer,
     SeparatorTokenizer,
     RandomBlockTokenizer,
     SmartTokenizer
 }
 
+/// <summary>
+/// Supported geenrators
+/// </summary>
 public enum TextGeneratorType : byte
 {
+    /// <summary>
+    /// Uninitialized value
+    /// </summary>
+    None,
     Default
 }
 
 public class StageWrapper : ObservableObject
 {
-    public StageWrapper Self { get => this; }
-
     private WDGenerationStage Stage_;
     public ref WDGenerationStage Stage
     {
@@ -43,7 +54,7 @@ public class StageWrapper : ObservableObject
 
     public int RepeatTimes
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -54,7 +65,7 @@ public class StageWrapper : ObservableObject
     // Yeah, literally many variables for different creators like in Word generator 2
     public int BlockSize
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -69,7 +80,7 @@ public class StageWrapper : ObservableObject
 
     public string Separator
     {
-        get => field;
+        get;
         set
         {
             if(value.Length > 1) value = value.Substring(0, 1);
@@ -86,7 +97,7 @@ public class StageWrapper : ObservableObject
 
     public int MinBlockSize
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -101,7 +112,7 @@ public class StageWrapper : ObservableObject
 
     public int MaxBlockSize
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -116,7 +127,7 @@ public class StageWrapper : ObservableObject
 
     public int IterationsCount
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -131,7 +142,7 @@ public class StageWrapper : ObservableObject
 
     public int MaxTokenLength
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -146,7 +157,7 @@ public class StageWrapper : ObservableObject
 
     public int TokenizerTopK
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -161,7 +172,7 @@ public class StageWrapper : ObservableObject
 
     public int MinPairOccurrences
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -177,7 +188,7 @@ public class StageWrapper : ObservableObject
     // Generator parameters:
     public int OutputSize
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -190,7 +201,7 @@ public class StageWrapper : ObservableObject
 
     public int TopK
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -203,7 +214,7 @@ public class StageWrapper : ObservableObject
 
     public float RandomTokenChance
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -216,7 +227,7 @@ public class StageWrapper : ObservableObject
 
     public bool UseDebugSeparator
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);
@@ -236,7 +247,7 @@ public class StageWrapper : ObservableObject
 
     public TokenizerType SelectedTokenizerType
     {
-        get => field;
+        get;
         set
         {
             Stage.Tokenizer = value switch
@@ -251,7 +262,7 @@ public class StageWrapper : ObservableObject
             SetProperty(ref field, value);
             UpdateTokenizerUsageProperties();
         }
-    } = TokenizerType.BlockTokenizer;
+    }
 
     private void UpdateTokenizerUsageProperties()
     {
@@ -270,17 +281,14 @@ public class StageWrapper : ObservableObject
 
     public TextGeneratorType SelectedGeneratorType
     {
-        get => field;
+        get;
         set
         {
-            switch(value)
+            Stage.Generator = value switch
             {
-                case TextGeneratorType.Default:
-                    Stage.Generator = Stage.Generator is not DefaultTextGenerator ? new DefaultTextGenerator() : Stage.Generator;
-                    break;
-
-                default: throw new ArgumentException("Selected generator type can't be added to stage!");
-            }
+                TextGeneratorType.Default => Stage.Generator is not DefaultTextGenerator ? new DefaultTextGenerator() : Stage.Generator,
+                _ => throw new ArgumentException("Selected generator type can't be added to stage!"),
+            };
 
             SetProperty(ref field, value);
             UpdateGeneratorUsageProps();
@@ -289,7 +297,7 @@ public class StageWrapper : ObservableObject
 
     private void UpdateGeneratorUsageProps()
     {
-        OnPropertyChanged(nameof(UsingBlockTokenizer));
+        OnPropertyChanged(nameof(UsingDefaultGenerator));
     }
 
 
@@ -303,21 +311,16 @@ public class StageWrapper : ObservableObject
 
     public StageWrapper()
     {
-        // Fuck c#, I could do this at compile time in D
-        TokenizerType[] values = Enum.GetValues<TokenizerType>();
+        TokenizerTypes = [TokenizerType.BlockTokenizer, TokenizerType.RandomBlockTokenizer, TokenizerType.SeparatorTokenizer, TokenizerType.SmartTokenizer];
 
-        foreach(var value in values)
-        {
-            TokenizerTypes.Add(value);
-        }
-
-        SelectedTokenizerType = TokenizerTypes[0];
+        SelectedTokenizerType = TokenizerType.BlockTokenizer;
+        SelectedGeneratorType = TextGeneratorType.Default;
     }
 }
 
-public class WDViewModel : ObservableObject
+public partial class WDViewModel : ObservableObject
 {
-    private nint WindowHandle;
+    private readonly nint WindowHandle;
 
     public WDViewModel(nint windowHandle)
     {
@@ -327,7 +330,7 @@ public class WDViewModel : ObservableObject
     public string InputText { get => field; set => SetProperty(ref field, value); } = "Enter the text here...";
     public string ResultText
     {
-        get => field;
+        get;
         set
         {
             SetProperty(ref field, value);

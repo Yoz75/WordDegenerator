@@ -314,7 +314,7 @@
                                             </ComboBox>
 
                                             <!--#region Generators-->
-                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator}" Background="#404040"
+                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator, Mode=OneWay}" Background="#404040"
                                                 Margin="8,4,8,8" Padding="4,4,4,4">
                                                 <NumberBox x:Name="OutputSizeNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
