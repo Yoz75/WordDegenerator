@@ -376,6 +376,11 @@
 
                                         <Button x:Uid="RemoveStageButton" Background="#D70040" Margin="8, 0, 0, 8" Click="RemoveStageButtonClick">
                                             <FontIcon Glyph="&#xE74D;"/>
+                                            <ToolTipService.ToolTip>                                                
+                                                <ToolTip>
+                                                    <TextBlock x:Uid="RemoveStageButtonTooltip"/>
+                                                </ToolTip>
+                                            </ToolTipService.ToolTip>
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>

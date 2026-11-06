@@ -246,4 +246,7 @@
   <data name="RemoveStageButton" xml:space="preserve">
     <value>Remove stage</value>
   </data>
+  <data name="RemoveStageButtonTooltip.Text" xml:space="preserve">
+    <value>Remove current stage</value>
+  </data>
 </root>
