@@ -9,7 +9,7 @@ using WD.Core.TextGenerators;
 using WD.Core.Tokenizers;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-namespace GUI;
+namespace WD.GUI;
 
 /*
     ***************************************************************************************************************************************************************

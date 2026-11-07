@@ -5,8 +5,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Core/Core.csproj" />
-  <Project Path="GUI/GUI.csproj" Id="9c394f4e-426b-4a21-b3b1-2b0b8be04038">
+  <Project Path="Core/WD.Core.csproj" />
+  <Project Path="GUI/WD.GUI.csproj" Id="9c394f4e-426b-4a21-b3b1-2b0b8be04038">
     <BuildType Solution="Debug|Any CPU" Project="Release" />
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="ARM64" />
