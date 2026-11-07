@@ -16,3 +16,6 @@ Short tokenizers tip:
 * `SeparatorTokenizer` works like T9. This one doesn't make "new words" (if you select space as separator)
 * `RandomBlockTOkenizer` same as `BlockTokenizer`, but uses random sized blocks for better output
 * `SmartTokenizer` tokenizer that uses [BPE-like](https://en.wikipedia.org/wiki/Byte-pair_encoding) algorithm, but very slow on long texts. Use at least 1000 iterations.
+
+# Known bugs:
+ * TopK and output length of Default Generator are 1 by default
