@@ -19,3 +19,4 @@ Short tokenizers tip:
 
 # Known bugs:
  * TopK and output length of Default Generator are 1 by default
+ * Tokenizer shows correct parameters, but actually they ALL EQUALS TO 1 by default and you have to manually change them
