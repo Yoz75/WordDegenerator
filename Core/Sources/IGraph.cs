@@ -23,14 +23,8 @@ public interface INode<TVertexWeight, TEdgeWeight>
     public void AddNeighbor(INode<TVertexWeight, TEdgeWeight> neighbor, TEdgeWeight edgeWeight);
 }
 
-public interface IGraph<TVertexWeight, TEdgeWeight> : IGetRandom<INode<TVertexWeight, TEdgeWeight>>
-{
-    /// <summary>
-    /// Add a new unconnected node.
-    /// </summary>
-    /// <param name="node">the added node</param>
-    public void AddNode(INode<TVertexWeight, TEdgeWeight> node);
-    
+public interface IGraph<TVertexWeight, TEdgeWeight> : IGetRandom<INode<TVertexWeight, TEdgeWeight>>, ICollection<INode<TVertexWeight, TEdgeWeight>>
+{    
     /// <summary>
     /// Add an oriented edge from one node to another. Adds nodes if they are not in the graph 
     /// </summary>

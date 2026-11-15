@@ -314,19 +314,19 @@
                                             </ComboBox>
 
                                             <!--#region Generators-->
-                                            <StackPanel x:Name="DefaultGeneratorStackPanel" x:Load="{x:Bind UsingDefaultGenerator, Mode=OneWay}" Background="#404040"
+                                            <StackPanel x:Name="TopKGenerator" x:Load="{x:Bind UsingTopKGenerator, Mode=OneWay}" Background="#404040"
                                                 Margin="8,4,8,8" Padding="4,4,4,4">
-                                                <NumberBox x:Name="OutputSizeNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <TextBlock x:Uid="DefaultGeneratorResultLengthText" Foreground="Cornsilk"/>
+                                                            <TextBlock x:Uid="GeneratorResultLengthText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
                                                     </NumberBox.HeaderTemplate>
 
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
-                                                            <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorResultLengthTooltip"/>
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="TopKGeneratorResultLengthTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
@@ -335,42 +335,100 @@
                                                         Value="{x:Bind TopK, Mode=TwoWay}" Minimum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <TextBlock x:Uid="DefaultGeneratorTopKText" Foreground="Cornsilk"/>
+                                                            <TextBlock x:Uid="GeneratorTopKText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
                                                     </NumberBox.HeaderTemplate>
 
-
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
-                                                            <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorTopKTooltip"/>
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorTopKTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
 
-                                                <NumberBox x:Name="RandomTokenNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
                                                     <NumberBox.HeaderTemplate>
                                                         <DataTemplate>
-                                                            <TextBlock x:Uid="DefaultGeneratorRandomTokenText" Foreground="Cornsilk"/>
+                                                            <TextBlock x:Uid="GeneratorRandomTokenText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
                                                     </NumberBox.HeaderTemplate>
 
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
-                                                            <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorRandomTokenTooltip"/>
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorRandomTokenTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </NumberBox>
 
-                                                <TextBlock x:Uid="DefaultGeneratorEnableSeparatorText" Foreground="Cornsilk"/>
-                                                <CheckBox x:Name="UseDebugSeparatorCheckBox" IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}">
+                                                <TextBlock x:Uid="GeneratorEnableSeparatorText" Foreground="Cornsilk"/>
+                                                <CheckBox IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}">
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
-                                                            <TextBlock TextWrapping="Wrap" x:Uid="DefaultGeneratorEnableSeparatorTooltip"/>
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorEnableSeparatorTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </CheckBox>
                                             </StackPanel>
+
+                                            <StackPanel x:Name="TopPGenerator" x:Load="{x:Bind UsingTopPGenerator, Mode=OneWay}" Background="#404040"
+                                                Margin="8,4,8,8" Padding="4,4,4,4">
+                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                         Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
+                                                    <NumberBox.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock x:Uid="GeneratorResultLengthText" Foreground="Cornsilk"/>
+                                                        </DataTemplate>
+                                                    </NumberBox.HeaderTemplate>
+
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorResultLengthTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </NumberBox>
+
+                                                <NumberBox x:Name="TopPNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                        Value="{x:Bind TopP, Mode=TwoWay}" Minimum="0" Maximum="1">
+                                                    <NumberBox.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock x:Uid="GeneratorTopPText" Foreground="Cornsilk"/>
+                                                        </DataTemplate>
+                                                    </NumberBox.HeaderTemplate>
+
+
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorTopKTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </NumberBox>
+
+                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                        Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
+                                                    <NumberBox.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock x:Uid="GeneratorRandomTokenText" Foreground="Cornsilk"/>
+                                                        </DataTemplate>
+                                                    </NumberBox.HeaderTemplate>
+
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorRandomTokenTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </NumberBox>
+
+                                                <TextBlock x:Uid="GeneratorEnableSeparatorText" Foreground="Cornsilk"/>
+                                                <CheckBox IsChecked="{x:Bind UseDebugSeparator, Mode=TwoWay}">
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorEnableSeparatorTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </CheckBox>
+                                            </StackPanel>
+
                                             <!--#endregion-->
                                         </StackPanel>
 

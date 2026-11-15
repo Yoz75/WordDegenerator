@@ -9,11 +9,11 @@ public struct VertexWeightInfo
     public string Value;
 }
 
-[DebuggerDisplay("{EnterWeight}")]
+[DebuggerDisplay("{AppearancesCount}")]
 public struct EdgeWeightInfo
 {
     /// <summary>
-    /// Weight of entering in this node. This value can be any number, but greater = greater chance to enter
+    /// Count of times this edge appeares
     /// </summary>
-    public float EnterWeight;
+    public int AppearancesCount;
 }

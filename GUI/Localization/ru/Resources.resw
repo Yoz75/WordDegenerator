@@ -141,23 +141,20 @@
   <data name="SelectedTokenizerTooltip.Text" xml:space="preserve">
     <value>Выбранная стратегия для превращения графа токенов в читаемый человеком текст. См. больше в документации</value>
   </data>
-  <data name="DefaultGeneratorResultLengthTooltip.Text" xml:space="preserve">
+  <data name="GeneratorResultLengthTooltip.Text" xml:space="preserve">
     <value>Устанавливает количество сгенерированных токенов</value>
   </data>
   <data name="SmartTokenizerTopKTooltip.Text" xml:space="preserve">
     <value>Устанавливает количество самых частых пар, среди которых 1 будет случайно выбрана для превращения в токен</value>
   </data>
-  <data name="DefaultGeneratorTopKTooltip.Text" xml:space="preserve">
+  <data name="GeneratorTopKTooltip.Text" xml:space="preserve">
     <value>Установить количество самых частых токенов, среди которых 1 будет случайно выбран и записан в текст. Значения типа 1 или 2 могут создавать странный вывод</value>
   </data>
-  <data name="DefaultGeneratorRandomTokenTooltip.Text" xml:space="preserve">
+  <data name="GeneratorRandomTokenTooltip.Text" xml:space="preserve">
     <value>Устанавливает вероятность выбора следующего случайного токена в диапазоне [0..1]. Значение 1 означает выбор только случайных токенов. Значение 0 означает выбор только токенов, следующих за предыдущим (однако, следующий токен будет сгенерирован случайным образом, если последующих токенов нет).</value>
   </data>
   <data name="ClearTokenizerCacheTooltip.Text" xml:space="preserve">
     <value>Некоторые токенайзеры занимают слишком большое время для создания токенов, а потому Word Degenerator кеширует последнюю токенизацию. Эта кнопка очищает кеш токенизатора и в следующую генерацию придётся пересоздавать токены</value>
-  </data>
-  <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
-    <value>Включить разделитель токенов, когда чекбокс включен</value>
   </data>
   <data name="ExecuteButton.Content" xml:space="preserve">
     <value>Выполнить</value>
@@ -204,17 +201,14 @@
   <data name="SelectedGeneratorText.Text" xml:space="preserve">
     <value>Выбранный генератор</value>
   </data>
-  <data name="DefaultGeneratorResultLengthText.Text" xml:space="preserve">
+  <data name="GeneratorResultLengthText.Text" xml:space="preserve">
     <value>Длина результата</value>
   </data>
-  <data name="DefaultGeneratorTopKText.Text" xml:space="preserve">
+  <data name="GeneratorTopKText.Text" xml:space="preserve">
     <value>Top K</value>
   </data>
-  <data name="DefaultGeneratorRandomTokenText.Text" xml:space="preserve">
+  <data name="GeneratorRandomTokenText.Text" xml:space="preserve">
     <value>Шанс случайного токена</value>
-  </data>
-  <data name="DefaultGeneratorEnableSeparatorText.Text" xml:space="preserve">
-    <value>Включить разделитель токенов</value>
   </data>
   <data name="SmartTokenizerMinPairOccurrences.Text" xml:space="preserve">
     <value>Минимальное кол-во включений пары</value>
@@ -248,5 +242,14 @@
   </data>
   <data name="RemoveStageButtonTooltip.Text" xml:space="preserve">
     <value>Удалить текущую стадию</value>
+  </data>
+  <data name="GeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
+    <value>Включить разделитель токенов, когда чекбокс включен</value>
+  </data>
+  <data name="GeneratorEnableSeparatorText.Text" xml:space="preserve">
+    <value>Включить разделитель токенов</value>
+  </data>
+  <data name="GeneratorTopPText.Text" xml:space="preserve">
+    <value>Top P</value>
   </data>
 </root>

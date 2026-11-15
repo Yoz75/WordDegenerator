@@ -9,8 +9,9 @@ namespace WD.Core;
 public interface IGetRandom<T> : IEnumerable<T>
 {
     /// <summary>
-    /// Get random element of collection
+    /// Get random element of collection. 
     /// </summary>
+    /// <param name="seed">the seed of random. -1 means random seed</param>
     /// <returns>a random element of the collection</returns>
-    T GetRandom();
+    T GetRandom(int seed = -1);
 }

@@ -41,7 +41,8 @@ public enum TextGeneratorType : byte
     /// Uninitialized value
     /// </summary>
     None,
-    Default
+    TopK,
+    TopP
 }
 
 public class StageWrapper : ObservableObject
@@ -192,9 +193,9 @@ public class StageWrapper : ObservableObject
         set
         {
             SetProperty(ref field, value);
-            if(Stage.Generator is DefaultTextGenerator defaultGenerator)
+            if(Stage.Generator is SequentalGenerator generator)
             {
-                defaultGenerator.OutputSize = value;
+                generator.OutputSize = value;
             }
         }
     } = 150;
@@ -205,12 +206,25 @@ public class StageWrapper : ObservableObject
         set
         {
             SetProperty(ref field, value);
-            if(Stage.Generator is DefaultTextGenerator defaultGenerator)
+            if(Stage.Generator is TopKGenerator generator)
             {
-                defaultGenerator.TopK = value;
+                generator.TopK = value;
             }
         }
     } = 5;
+
+    public float TopP
+    {
+        get;
+        set
+        {
+            SetProperty(ref field, value);
+            if(Stage.Generator is TopPGenerator generator)
+            {
+                generator.TopP = value;
+            }
+        }
+    } = 0.75f;
 
     public float RandomTokenChance
     {
@@ -218,9 +232,9 @@ public class StageWrapper : ObservableObject
         set
         {
             SetProperty(ref field, value);
-            if(Stage.Generator is DefaultTextGenerator defaultGenerator)
+            if(Stage.Generator is SequentalGenerator generator)
             {
-                defaultGenerator.RandomTokenChance = value;
+                generator.RandomTokenChance = value;
             }
         }
     } = 0;
@@ -231,9 +245,9 @@ public class StageWrapper : ObservableObject
         set
         {
             SetProperty(ref field, value);
-            if(Stage.Generator is DefaultTextGenerator defaultGenerator)
+            if(Stage.Generator is SequentalGenerator generator)
             {
-                defaultGenerator.UseSeparator = value;
+                generator.UseSeparator = value;
             }
         }
     } = false;
@@ -242,7 +256,7 @@ public class StageWrapper : ObservableObject
 
     public ObservableCollection<TextGeneratorType> GeneratorTypes { get; } =
     [
-        TextGeneratorType.Default
+        TextGeneratorType.TopK
     ];
 
     public TokenizerType SelectedTokenizerType
@@ -277,7 +291,8 @@ public class StageWrapper : ObservableObject
     public bool UsingRandomTokenizer => Stage.Tokenizer is RandomBlockTokenizer;
     public bool UsingSmartTokenizer => Stage.Tokenizer is SmartTokenizer;
 
-    public bool UsingDefaultGenerator => Stage.Generator is DefaultTextGenerator;
+    public bool UsingTopKGenerator => Stage.Generator is TopKGenerator;
+    public bool UsingTopPGenerator => Stage.Generator is TopPGenerator;
 
     public TextGeneratorType SelectedGeneratorType
     {
@@ -286,7 +301,8 @@ public class StageWrapper : ObservableObject
         {
             Stage.Generator = value switch
             {
-                TextGeneratorType.Default => Stage.Generator is not DefaultTextGenerator ? new DefaultTextGenerator() : Stage.Generator,
+                TextGeneratorType.TopK => Stage.Generator is not TopKGenerator ? new TopKGenerator() : Stage.Generator,
+                TextGeneratorType.TopP => Stage.Generator is not TopPGenerator ? new TopPGenerator() : Stage.Generator,
                 _ => throw new ArgumentException("Selected generator type can't be added to stage!"),
             };
 
@@ -297,7 +313,8 @@ public class StageWrapper : ObservableObject
 
     private void UpdateGeneratorUsageProps()
     {
-        OnPropertyChanged(nameof(UsingDefaultGenerator));
+        OnPropertyChanged(nameof(UsingTopKGenerator));
+        OnPropertyChanged(nameof(UsingTopPGenerator));
     }
 
 
@@ -312,9 +329,10 @@ public class StageWrapper : ObservableObject
     public StageWrapper()
     {
         TokenizerTypes = [TokenizerType.BlockTokenizer, TokenizerType.RandomBlockTokenizer, TokenizerType.SeparatorTokenizer, TokenizerType.SmartTokenizer];
+        GeneratorTypes = [TextGeneratorType.TopK, TextGeneratorType.TopP];
 
         SelectedTokenizerType = TokenizerType.BlockTokenizer;
-        SelectedGeneratorType = TextGeneratorType.Default;
+        SelectedGeneratorType = TextGeneratorType.TopK;
     }
 }
 
@@ -350,7 +368,11 @@ public partial class WDViewModel : ObservableObject
         Stages.Remove(wrapper);
     }
 
+#if DEBUG
+    public void ExecuteAsync()
+#else
     public async Task ExecuteAsync()
+#endif
     {
         if(ExecuteTask is not null && !ExecuteTask.IsCompleted) return;
 
@@ -359,16 +381,34 @@ public partial class WDViewModel : ObservableObject
         var input = InputText;
         var stagesSnapshot = Stages.Select(s => s.Stage).ToArray();
 
-        ExecuteTask = Task.Run(() =>
+#if DEBUG
+        try
+        {
+            var degenerator = new WordDegenerator();
+            foreach(var snapshot in stagesSnapshot)
+                degenerator.Stages.Add(snapshot);
+
+            ResultText = degenerator.Execute(input);
+        }
+        catch(Exception ex)
+        {
+            System.Diagnostics.Debugger.Break();
+        }
+#else
+
+        /*ExecuteTask = Task.Run(() =>
         {
             var degenerator = new WordDegenerator();
             foreach(var snapshot in stagesSnapshot)
                 degenerator.Stages.Add(snapshot);
 
             return degenerator.Execute(input);
-        });
+        });*/
 
         ResultText = await ExecuteTask;
+#endif
+
+
     }
 
     public async void LoadFileAsync()

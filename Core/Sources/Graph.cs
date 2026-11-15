@@ -29,7 +29,11 @@ public sealed class Graph<TVertexWeight, TEdgeWeight> : IGraph<TVertexWeight, TE
 {
     private readonly HashSet<INode<TVertexWeight, TEdgeWeight>> Nodes = [];
 
-    public void AddNode(INode<TVertexWeight, TEdgeWeight> node)
+    public int Count => Nodes.Count;
+
+    public bool IsReadOnly => throw new NotImplementedException();
+
+    public void Add(INode<TVertexWeight, TEdgeWeight> node)
     {
         Nodes.Add(node);
     }
@@ -61,8 +65,39 @@ public sealed class Graph<TVertexWeight, TEdgeWeight> : IGraph<TVertexWeight, TE
         return GetEnumerator();
     }
 
-    public INode<TVertexWeight, TEdgeWeight> GetRandom()
+    public INode<TVertexWeight, TEdgeWeight> GetRandom(int seed = -1)
     {
-        return Nodes.ElementAt(Random.Shared.Next(Nodes.Count));
+        var random = seed == -1 ? new Random() : new Random(seed);
+        return Nodes.ElementAt(random.Next(Nodes.Count));
+    }
+
+    public void Clear()
+    {
+        Nodes.Clear();
+    }
+
+    public bool Contains(INode<TVertexWeight, TEdgeWeight> item)
+    {
+        return Nodes.Contains(item);
+    }
+
+    public void CopyTo(INode<TVertexWeight, TEdgeWeight>[] array, int arrayIndex)
+    {
+        Nodes.CopyTo(array, arrayIndex);
+    }
+
+    public bool Remove(INode<TVertexWeight, TEdgeWeight> item)
+    {
+        if(Nodes.TryGetValue(item, out var node))
+        {
+            foreach(var neighbor in node.Connections)
+            {
+                neighbor.Key.Connections.Remove(item);
+            }
+
+            node.Connections.Clear();
+        }
+
+        return false;
     }
 }

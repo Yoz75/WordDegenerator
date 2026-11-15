@@ -141,23 +141,20 @@
   <data name="SelectedTokenizerTooltip.Text" xml:space="preserve">
     <value>Selected strategy to create human readable text from tokens graph. Read documentation to learn more about different generator types</value>
   </data>
-  <data name="DefaultGeneratorResultLengthTooltip.Text" xml:space="preserve">
+  <data name="GeneratorResultLengthTooltip.Text" xml:space="preserve">
     <value>Sets the count of tokens that should be generated</value>
   </data>
   <data name="SmartTokenizerTopKTooltip.Text" xml:space="preserve">
     <value>Sets the count of most frequent pairs from which 1 will be randomly selected and converted into the next token</value>
   </data>
-  <data name="DefaultGeneratorTopKTooltip.Text" xml:space="preserve">
+  <data name="GeneratorTopKTooltip.Text" xml:space="preserve">
     <value>Sets the count of most frequent next tokens from which 1 will be randomly selected and written into the text. Values like 1 or 2 may give strange results</value>
   </data>
-  <data name="DefaultGeneratorRandomTokenTooltip.Text" xml:space="preserve">
+  <data name="GeneratorRandomTokenTooltip.Text" xml:space="preserve">
     <value>Sets the chance in range [0..1] of selecting random next token. A value of 1 gives only randomly selected tokens. A value of 0 ensures that only tokens following the previous one are selected (but next token will be randomly generated if there is no subsequent tokens)</value>
   </data>
   <data name="ClearTokenizerCacheTooltip.Text" xml:space="preserve">
     <value>Some tokenizers take too long time to create tokens, so Word Degenerator creates cache for the last tokenization. This button clears the cache and tokenizer must do retokenization next generation</value>
-  </data>
-  <data name="DefaultGeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
-    <value>Enables separator of tokens in output text box when checked</value>
   </data>
   <data name="ExecuteButton.Content" xml:space="preserve">
     <value>Run</value>
@@ -204,17 +201,14 @@
   <data name="SelectedGeneratorText.Text" xml:space="preserve">
     <value>Selected generator</value>
   </data>
-  <data name="DefaultGeneratorResultLengthText.Text" xml:space="preserve">
+  <data name="GeneratorResultLengthText.Text" xml:space="preserve">
     <value>Result Length</value>
   </data>
-  <data name="DefaultGeneratorTopKText.Text" xml:space="preserve">
+  <data name="GeneratorTopKText.Text" xml:space="preserve">
     <value>Top K</value>
   </data>
-  <data name="DefaultGeneratorRandomTokenText.Text" xml:space="preserve">
+  <data name="GeneratorRandomTokenText.Text" xml:space="preserve">
     <value>Random token chance</value>
-  </data>
-  <data name="DefaultGeneratorEnableSeparatorText.Text" xml:space="preserve">
-    <value>Enable tokens separator</value>
   </data>
   <data name="SmartTokenizerMinPairOccurrences.Text" xml:space="preserve">
     <value>Minimal pair occurrences</value>
@@ -248,5 +242,14 @@
   </data>
   <data name="RemoveStageButtonTooltip.Text" xml:space="preserve">
     <value>Remove current stage</value>
+  </data>
+  <data name="GeneratorEnableSeparatorTooltip.Text" xml:space="preserve">
+    <value>Enables separator of tokens in output text box when checked</value>
+  </data>
+  <data name="GeneratorEnableSeparatorText.Text" xml:space="preserve">
+    <value>Enable tokens separator</value>
+  </data>
+  <data name="GeneratorTopPText.Text" xml:space="preserve">
+    <value>Top P</value>
   </data>
 </root>
