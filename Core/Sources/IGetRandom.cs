@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 
 namespace WD.Core;
@@ -11,7 +12,7 @@ public interface IGetRandom<T> : IEnumerable<T>
     /// <summary>
     /// Get random element of collection. 
     /// </summary>
-    /// <param name="seed">the seed of random. -1 means random seed</param>
+    /// <param name="random">the random to be used. null means default random</param>
     /// <returns>a random element of the collection</returns>
-    T GetRandom(int seed = -1);
+    T GetRandom(Random? random = null);
 }

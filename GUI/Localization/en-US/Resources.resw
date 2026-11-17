@@ -252,4 +252,10 @@
   <data name="GeneratorTopPText.Text" xml:space="preserve">
     <value>Top P</value>
   </data>
+  <data name="GeneratorSeedText.Text" xml:space="preserve">
+    <value>Seed</value>
+  </data>
+  <data name="GeneratorSeedTooltip.Text" xml:space="preserve">
+    <value>Specifies a magic number for generating pseudo-random numbers. -1 = random seed every generation.</value>
+  </data>
 </root>

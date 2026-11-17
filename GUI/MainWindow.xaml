@@ -316,35 +316,35 @@
                                             <!--#region Generators-->
                                             <StackPanel x:Name="TopKGenerator" x:Load="{x:Bind UsingTopKGenerator, Mode=OneWay}" Background="#404040"
                                                 Margin="8,4,8,8" Padding="4,4,4,4">
-                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                <winex:NumberBoxInt32 Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
-                                                    <NumberBox.HeaderTemplate>
+                                                    <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
                                                             <TextBlock x:Uid="GeneratorResultLengthText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
-                                                    </NumberBox.HeaderTemplate>
+                                                    </winex:NumberBoxInt32.HeaderTemplate>
 
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="TopKGeneratorResultLengthTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
-                                                </NumberBox>
+                                                </winex:NumberBoxInt32>
 
-                                                <NumberBox x:Name="TopKNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                <winex:NumberBoxInt32 x:Name="TopKNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind TopK, Mode=TwoWay}" Minimum="1">
-                                                    <NumberBox.HeaderTemplate>
+                                                    <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
                                                             <TextBlock x:Uid="GeneratorTopKText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
-                                                    </NumberBox.HeaderTemplate>
+                                                    </winex:NumberBoxInt32.HeaderTemplate>
 
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="GeneratorTopKTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
-                                                </NumberBox>
+                                                </winex:NumberBoxInt32>
 
                                                 <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind RandomTokenChance, Mode=TwoWay}" Minimum="0" Maximum="1">
@@ -369,24 +369,39 @@
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </CheckBox>
+
+                                                <winex:NumberBoxInt32 Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                         Value="{x:Bind Seed, Mode=TwoWay}">
+                                                    <winex:NumberBoxInt32.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock x:Uid="GeneratorSeedText" Foreground="Cornsilk"/>
+                                                        </DataTemplate>
+                                                    </winex:NumberBoxInt32.HeaderTemplate>
+
+                                                        <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorSeedTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </winex:NumberBoxInt32>
                                             </StackPanel>
 
                                             <StackPanel x:Name="TopPGenerator" x:Load="{x:Bind UsingTopPGenerator, Mode=OneWay}" Background="#404040"
                                                 Margin="8,4,8,8" Padding="4,4,4,4">
-                                                <NumberBox Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                <winex:NumberBoxInt32 Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                          Value="{x:Bind OutputSize, Mode=TwoWay}" Minimum="1">
-                                                    <NumberBox.HeaderTemplate>
+                                                    <winex:NumberBoxInt32.HeaderTemplate>
                                                         <DataTemplate>
                                                             <TextBlock x:Uid="GeneratorResultLengthText" Foreground="Cornsilk"/>
                                                         </DataTemplate>
-                                                    </NumberBox.HeaderTemplate>
+                                                    </winex:NumberBoxInt32.HeaderTemplate>
 
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="GeneratorResultLengthTooltip"/>
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
-                                                </NumberBox>
+                                                </winex:NumberBoxInt32>
 
                                                 <NumberBox x:Name="TopPNumberBox" Background="#505050" Foreground="Cornsilk" CornerRadius="4"
                                                         Value="{x:Bind TopP, Mode=TwoWay}" Minimum="0" Maximum="1">
@@ -427,8 +442,22 @@
                                                         </ToolTip>
                                                     </ToolTipService.ToolTip>
                                                 </CheckBox>
-                                            </StackPanel>
 
+                                                <winex:NumberBoxInt32 Background="#505050" Foreground="Cornsilk" CornerRadius="4"
+                                                         Value="{x:Bind Seed, Mode=TwoWay}">
+                                                    <winex:NumberBoxInt32.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock x:Uid="GeneratorSeedText" Foreground="Cornsilk"/>
+                                                        </DataTemplate>
+                                                    </winex:NumberBoxInt32.HeaderTemplate>
+
+                                                    <ToolTipService.ToolTip>
+                                                        <ToolTip MaxWidth="700" MaxHeight="600">
+                                                            <TextBlock TextWrapping="Wrap" x:Uid="GeneratorSeedTooltip"/>
+                                                        </ToolTip>
+                                                    </ToolTipService.ToolTip>
+                                                </winex:NumberBoxInt32>
+                                            </StackPanel>
                                             <!--#endregion-->
                                         </StackPanel>
 

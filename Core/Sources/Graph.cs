@@ -65,9 +65,9 @@ public sealed class Graph<TVertexWeight, TEdgeWeight> : IGraph<TVertexWeight, TE
         return GetEnumerator();
     }
 
-    public INode<TVertexWeight, TEdgeWeight> GetRandom(int seed = -1)
+    public INode<TVertexWeight, TEdgeWeight> GetRandom(Random? random = null)
     {
-        var random = seed == -1 ? new Random() : new Random(seed);
+        random = (random is null) ? new Random() : random;
         return Nodes.ElementAt(random.Next(Nodes.Count));
     }
 

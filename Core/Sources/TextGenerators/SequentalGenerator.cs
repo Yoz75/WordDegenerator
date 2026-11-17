@@ -20,7 +20,7 @@ public abstract class SequentalGenerator : ITextGenerator
     /// </summary>
     public int OutputSize
     {
-        get => field;
+        get;
         set
         {
             if(value <= 0)
@@ -37,44 +37,32 @@ public abstract class SequentalGenerator : ITextGenerator
     /// </summary>
     public float RandomTokenChance
     {
-        get => field;
-
-        set => field = value;
+        get;
+        set;
     }
 
     /// <summary>
-    /// The seed of generator. Same seed for same generator always produces same result
+    /// The seed of generator. Same seed for same generator always produces same result.
+    /// Value -1 means random seed every generation
     /// </summary>
-    public int Seed
-    {
-        get;
-        set
-        {
-            if(value == -1)
-            {
-                field = Random.Shared.Next();
-                Random = new(field);
-            }
-        }
-    } = -1;
-
-    protected Random Random = new();
+    public int Seed = -1;
 
     public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph)
     {
+        var random = Seed == -1 ? new Random() : new Random(Seed);
         StringBuilder sb = new();
-        INode<VertexWeightInfo, EdgeWeightInfo> current = graph.GetRandom();
+        INode<VertexWeightInfo, EdgeWeightInfo> current = graph.GetRandom(random);
 
         for(int i = 0; i < OutputSize; i++)
         {
             sb.Append(current.Value.Value);
             if(UseSeparator) sb.Append('|');
 
-            var isRandom = Random.Shared.NextDouble() < RandomTokenChance;
-            var isChoseNext = TryGetNextToken(graph, current, out var next);
+            var isRandom = random.NextDouble() < RandomTokenChance;
+            var isChoseNext = TryGetNextToken(graph, current, out var next, random);
             if(isRandom || !isChoseNext)
             {
-                current = graph.GetRandom(Seed);
+                current = graph.GetRandom(random);
                 continue;
             }
 
@@ -85,5 +73,5 @@ public abstract class SequentalGenerator : ITextGenerator
     }
 
     protected abstract bool TryGetNextToken(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, 
-        INode<VertexWeightInfo, EdgeWeightInfo> node, out INode<VertexWeightInfo, EdgeWeightInfo>? next);
+        INode<VertexWeightInfo, EdgeWeightInfo> node, out INode<VertexWeightInfo, EdgeWeightInfo>? next, Random random);
 }

@@ -252,6 +252,19 @@ public class StageWrapper : ObservableObject
         }
     } = false;
 
+    public int Seed
+    {
+        get;
+        set
+        {
+            SetProperty(ref field, value);
+            if(Stage.Generator is SequentalGenerator generator)
+            {
+                generator.Seed = value;
+            }
+        }
+    } = -1;
+
     public ObservableCollection<TokenizerType> TokenizerTypes { get; } = [];
 
     public ObservableCollection<TextGeneratorType> GeneratorTypes { get; } =

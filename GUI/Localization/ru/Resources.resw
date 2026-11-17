@@ -252,4 +252,10 @@
   <data name="GeneratorTopPText.Text" xml:space="preserve">
     <value>Top P</value>
   </data>
+  <data name="GeneratorSeedText.Text" xml:space="preserve">
+    <value>Сид</value>
+  </data>
+  <data name="GeneratorSeedTooltip.Text" xml:space="preserve">
+    <value>Задаёт магическое число для создания псевдослучайных чисел. -1 = случайный сид каждую генерацию.</value>
+  </data>
 </root>

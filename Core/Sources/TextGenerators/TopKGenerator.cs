@@ -30,7 +30,7 @@ public class TopKGenerator : SequentalGenerator
         else return TopK;
     }
 
-    protected override bool TryGetNextToken(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, INode<VertexWeightInfo, EdgeWeightInfo> node, out INode<VertexWeightInfo, EdgeWeightInfo> next)
+    protected override bool TryGetNextToken(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, INode<VertexWeightInfo, EdgeWeightInfo> node, out INode<VertexWeightInfo, EdgeWeightInfo> next, Random random)
     {
         next = null;
         if(node.Connections.Count <= 0) return false;
@@ -41,7 +41,7 @@ public class TopKGenerator : SequentalGenerator
         var topK = NormalizeTopKey(nodes.Count);
 
         // Random.Next top border is exclusive so everything is normal
-        next = nodes[Random.Next(topK)].Key;
+        next = nodes[random.Next(topK)].Key;
         return true;
     }
 }
