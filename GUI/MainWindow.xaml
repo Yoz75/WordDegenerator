@@ -411,7 +411,6 @@
                                                         </DataTemplate>
                                                     </NumberBox.HeaderTemplate>
 
-
                                                     <ToolTipService.ToolTip>
                                                         <ToolTip MaxWidth="700" MaxHeight="600">
                                                             <TextBlock TextWrapping="Wrap" x:Uid="GeneratorTopKTooltip"/>

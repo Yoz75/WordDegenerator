@@ -224,7 +224,7 @@ public class StageWrapper : ObservableObject
                 generator.TopP = value;
             }
         }
-    } = 0.75f;
+    } = 0.35f;
 
     public float RandomTokenChance
     {
