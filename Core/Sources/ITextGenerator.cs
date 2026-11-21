@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace WD.Core;
 
 /// <summary>
@@ -10,6 +12,7 @@ public interface ITextGenerator
     /// Generate a text from a graph
     /// </summary>
     /// <param name="graph"></param>
+    /// <param name="random">the random to be used</param>
     /// <returns></returns>
-    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph);
+    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, Random random);
 }

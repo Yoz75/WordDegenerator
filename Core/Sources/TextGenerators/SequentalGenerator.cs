@@ -41,15 +41,9 @@ public abstract class SequentalGenerator : ITextGenerator
         set;
     }
 
-    /// <summary>
-    /// The seed of generator. Same seed for same generator always produces same result.
-    /// Value -1 means random seed every generation
-    /// </summary>
-    public int Seed = -1;
-
-    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph)
+    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, Random? random = null)
     {
-        var random = Seed == -1 ? new Random() : new Random(Seed);
+        random ??= new();
         StringBuilder sb = new();
         INode<VertexWeightInfo, EdgeWeightInfo> current = graph.GetRandom(random);
 

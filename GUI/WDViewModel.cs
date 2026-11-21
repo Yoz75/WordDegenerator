@@ -256,12 +256,8 @@ public class StageWrapper : ObservableObject
     {
         get;
         set
-        {
-            SetProperty(ref field, value);
-            if(Stage.Generator is SequentalGenerator generator)
-            {
-                generator.Seed = value;
-            }
+        {j
+            SetProperty(ref field, value);            
         }
     } = -1;
 

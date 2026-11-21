@@ -93,7 +93,7 @@ public sealed class SmartTokenizer : CashTokenizer
         }
     } = 1;
 
-    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
+    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text, Random random)
     {
         Graph<VertexWeightInfo, EdgeWeightInfo> result = [];
         Dictionary<int, string> id2Text = [];
@@ -237,7 +237,7 @@ public sealed class SmartTokenizer : CashTokenizer
                 topKPairs[i] = pairs.Dequeue();
             }
 
-            var mostFrequentPair = topKPairs[Random.Shared.Next(topKPairs.Length)];
+            var mostFrequentPair = topKPairs[random.Next(topKPairs.Length)];
             return mostFrequentPair;
         }
     }

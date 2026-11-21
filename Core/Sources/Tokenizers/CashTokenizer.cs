@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace WD.Core.Tokenizers;
 
 /// <summary>
@@ -20,12 +22,12 @@ public abstract class CashTokenizer : ITokenizer
         CashedGraph = null;
     }
 
-    public IGraph<VertexWeightInfo, EdgeWeightInfo> Tokenize(string text)
+    public IGraph<VertexWeightInfo, EdgeWeightInfo> Tokenize(string text, Random random)
     {
         if(CashedInput is null || CashedGraph is null || CashedInput.GetHashCode() != text.GetHashCode())
         {
             CashedInput = text;
-            CashedGraph = InternalTokenize(text);
+            CashedGraph = InternalTokenize(text, random);
         }
 
         return CashedGraph;
@@ -36,13 +38,13 @@ public abstract class CashTokenizer : ITokenizer
     /// </summary>
     /// <param name="text"></param>
     /// <returns></returns>
-    public IGraph<VertexWeightInfo, EdgeWeightInfo> TokenizeForced(string text)
+    public IGraph<VertexWeightInfo, EdgeWeightInfo> TokenizeForced(string text, Random random)
     {
         CashedInput = text;
-        CashedGraph = InternalTokenize(text);
+        CashedGraph = InternalTokenize(text, random);
 
         return CashedGraph;
     }
 
-    protected abstract IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text);
+    protected abstract IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text, Random random);
 }

@@ -28,7 +28,7 @@ public sealed class BlockTokenizer : CashTokenizer
         }
     } = 3;
 
-    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
+    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text, Random random)
     {
         NormalizeText(ref text);
 

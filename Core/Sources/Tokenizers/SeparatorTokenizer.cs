@@ -10,7 +10,7 @@ namespace WD.Core.Tokenizers;
 public sealed class SeparatorTokenizer : CashTokenizer
 {
     public char Separator = ' ';
-    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
+    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text, Random random)
     {
         string[] tokens = text.Split(Separator, StringSplitOptions.RemoveEmptyEntries);
 

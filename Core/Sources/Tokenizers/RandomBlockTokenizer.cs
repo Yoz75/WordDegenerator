@@ -39,7 +39,7 @@ public sealed class RandomBlockTokenizer : CashTokenizer
         }
     } = 3;
 
-    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text)
+    protected override IGraph<VertexWeightInfo, EdgeWeightInfo> InternalTokenize(string text, Random random)
     {
         Graph<VertexWeightInfo, EdgeWeightInfo> result = [];
         Dictionary<string, Node<VertexWeightInfo, EdgeWeightInfo>> nodesMap = new(StringComparer.Ordinal);
@@ -66,7 +66,7 @@ public sealed class RandomBlockTokenizer : CashTokenizer
             }
 
             previous = current;
-            currentSize = Random.Shared.Next(Min, Max + 1);
+            currentSize = random.Next(Min, Max + 1);
 
             if(i + currentSize > text.Length)
             {
