@@ -256,7 +256,7 @@ public class StageWrapper : ObservableObject
     {
         get;
         set
-        {j
+        {
             SetProperty(ref field, value);            
         }
     } = -1;
