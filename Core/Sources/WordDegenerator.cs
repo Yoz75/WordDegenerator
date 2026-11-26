@@ -15,6 +15,16 @@ public struct WDGenerationStage
     /// Count of repeating this stage. When this value is n and n > 1, <see cref="WordDegenerator"/> generates text from input and then n - 1 times "feeds" result itself
     /// </summary>
     public int RepeatTimes;
+
+    /// <summary>
+    /// The seed of used random
+    /// </summary>
+    public int Seed = -1;
+
+    public WDGenerationStage()
+    {
+
+    }
 }
 
 public sealed class WordDegenerator
@@ -26,14 +36,14 @@ public sealed class WordDegenerator
     /// </summary>
     /// <param name="input">the input text</param>
     /// <returns>processed input</returns>
-    public string Execute(string input, int seed = -1)
+    public string Execute(string input)
     {
-        var random = seed == -1 ? new Random() : new Random(seed);
         string result = input;
 
         for(int i = 0; i < Stages.Count; i++)
         {
             WDGenerationStage stage = Stages[i];
+            var random = stage.Seed == -1 ? new Random() : new Random(stage.Seed);
 
             do
             {

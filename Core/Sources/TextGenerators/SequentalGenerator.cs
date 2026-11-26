@@ -41,9 +41,8 @@ public abstract class SequentalGenerator : ITextGenerator
         set;
     }
 
-    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, Random? random = null)
+    public string Generate(IGraph<VertexWeightInfo, EdgeWeightInfo> graph, Random random)
     {
-        random ??= new();
         StringBuilder sb = new();
         INode<VertexWeightInfo, EdgeWeightInfo> current = graph.GetRandom(random);
 

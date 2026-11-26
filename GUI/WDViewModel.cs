@@ -257,7 +257,8 @@ public class StageWrapper : ObservableObject
         get;
         set
         {
-            SetProperty(ref field, value);            
+            SetProperty(ref field, value);
+            Stage.Seed = value;
         }
     } = -1;
 
