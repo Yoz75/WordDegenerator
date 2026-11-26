@@ -45,7 +45,7 @@ public sealed class RandomBlockTokenizer : CashTokenizer
         Dictionary<string, Node<VertexWeightInfo, EdgeWeightInfo>> nodesMap = new(StringComparer.Ordinal);
         Node<VertexWeightInfo, EdgeWeightInfo>? previous = null;
 
-        int currentSize = Random.Shared.Next(Min, Max + 1);
+        int currentSize = random.Next(Min, Max + 1);
         for(int i = 0; i < text.Length - currentSize; i += currentSize)
         {
             Node<VertexWeightInfo, EdgeWeightInfo> current;
